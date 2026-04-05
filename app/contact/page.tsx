@@ -4,6 +4,7 @@ import { useState, FormEvent, ChangeEvent } from 'react';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
+import FadeIn from '@/components/FadeIn';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -42,19 +43,27 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-dark-purple text-white py-6 px-6 sticky top-0 z-50 shadow-lg">
-        <div className="flex justify-between items-center">
-          <a href="/" className="flex items-center">
-            <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-12 md:h-16" />
-          </a>
-          <nav className="hidden md:flex gap-8 items-center text-sm md:text-base lg:text-lg">
-            <a href="/" className="hover:text-antique-gold transition-colors">Home</a>
-            <a href="/shop" className="hover:text-antique-gold transition-colors">Shop</a>
-            <a href="/sourcing" className="hover:text-antique-gold transition-colors">Sourcing</a>
-            <a href="/gift-cards" className="hover:text-antique-gold transition-colors">Gift Cards</a>
-            <a href="/contact" className="bg-antique-gold text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition-all font-semibold">Contact Us</a>
-          </nav>
-          <MobileMenu currentPage="/contact" />
+      <header className="bg-dark-purple text-white py-6 sticky top-0 z-50 shadow-lg w-full">
+        <div className="w-full px-6 flex justify-between items-center">
+          <FadeIn delay={0} className="inline-flex">
+            <a href="/" className="flex items-center">
+              <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-12 md:h-16" />
+            </a>
+          </FadeIn>
+          <div className="flex items-center">
+            <FadeIn delay={0.1} className="inline-flex">
+              <nav className="hidden md:flex gap-8 items-center text-sm md:text-base lg:text-lg">
+                <a href="/" className="hover:text-antique-gold transition-colors">Home</a>
+                <a href="/shop" className="hover:text-antique-gold transition-colors">Shop</a>
+                <a href="/sourcing" className="hover:text-antique-gold transition-colors">Sourcing</a>
+                <a href="/gift-cards" className="hover:text-antique-gold transition-colors">Gift Cards</a>
+                <a href="/contact" className="bg-antique-gold text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition-all font-semibold">Contact Us</a>
+              </nav>
+            </FadeIn>
+            <FadeIn delay={0.1} className="inline-flex">
+              <MobileMenu currentPage="/contact" />
+            </FadeIn>
+          </div>
         </div>
       </header>
 
