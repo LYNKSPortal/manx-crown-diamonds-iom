@@ -162,43 +162,49 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <FadeIn delay={0.2}>
               <div className="text-center p-8 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-gray-100 hover:border-antique-gold transition-all">
-              <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Search className="w-10 h-10 text-antique-gold" />
+                <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Search className="w-10 h-10 text-antique-gold" />
+                </div>
+                <h3 className="text-xl font-serif font-bold mb-3 text-dark-purple">Sourcing</h3>
+                <p className="text-sm md:text-base lg:text-lg text-gray-600">
+                  Expert sourcing of diamonds, gemstones, and luxury timepieces with proper certification and authentication from trusted global suppliers.
+                </p>
               </div>
-              <h3 className="text-xl font-serif font-bold mb-3 text-dark-purple">Sourcing</h3>
-              <p className="text-sm md:text-base lg:text-lg text-gray-600">
-                Expert sourcing of diamonds, gemstones, and luxury timepieces with proper certification and authentication from trusted global suppliers.
-              </p>
-            </div>
+            </FadeIn>
 
-            <div className="text-center p-8 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-gray-100 hover:border-antique-gold transition-all">
-              <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Sparkles className="w-10 h-10 text-antique-gold" />
+            <FadeIn delay={0.3}>
+              <div className="text-center p-8 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-gray-100 hover:border-antique-gold transition-all">
+                <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Sparkles className="w-10 h-10 text-antique-gold" />
+                </div>
+                <h3 className="text-xl font-serif font-bold mb-3 text-dark-purple">Consulting</h3>
+                <p className="text-sm md:text-base lg:text-lg text-gray-600">
+                  One-on-one consultations to understand your vision and guide you through the design process with expert advice.
+                </p>
               </div>
-              <h3 className="text-xl font-serif font-bold mb-3 text-dark-purple">Consulting</h3>
-              <p className="text-sm md:text-base lg:text-lg text-gray-600">
-                One-on-one consultations to understand your vision and guide you through the design process with expert advice.
-              </p>
-            </div>
+            </FadeIn>
 
-            <div className="text-center p-8 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-gray-100 hover:border-antique-gold transition-all">
-              <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Palette className="w-10 h-10 text-antique-gold" />
+            <FadeIn delay={0.4}>
+              <div className="text-center p-8 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-gray-100 hover:border-antique-gold transition-all">
+                <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Palette className="w-10 h-10 text-antique-gold" />
+                </div>
+                <h3 className="text-xl font-serif font-bold mb-3 text-dark-purple">Customisation</h3>
+                <p className="text-sm md:text-base lg:text-lg text-gray-600">
+                  Expert restoration and redesign services for your treasured pieces, bringing new life to cherished jewellery.
+                </p>
               </div>
-              <h3 className="text-xl font-serif font-bold mb-3 text-dark-purple">Customisation</h3>
-              <p className="text-sm md:text-base lg:text-lg text-gray-600">
-                Expert restoration and redesign services for your treasured pieces, bringing new life to cherished jewellery.
-              </p>
-            </div>
+            </FadeIn>
 
-            <div className="text-center p-8 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-gray-100 hover:border-antique-gold transition-all">
-              <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Gift className="w-10 h-10 text-antique-gold" />
-              </div>
-              <h3 className="text-xl font-serif font-bold mb-3 text-dark-purple">Gift Cards</h3>
-              <p className="text-sm md:text-base lg:text-lg text-gray-600">
-                Give the gift of choice with our bespoke jewellery gift cards, perfect for any special occasion or celebration.
-              </p>
+            <FadeIn delay={0.5}>
+              <div className="text-center p-8 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-gray-100 hover:border-antique-gold transition-all">
+                <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Gift className="w-10 h-10 text-antique-gold" />
+                </div>
+                <h3 className="text-xl font-serif font-bold mb-3 text-dark-purple">Gift Cards</h3>
+                <p className="text-sm md:text-base lg:text-lg text-gray-600">
+                  Give the gift of choice with our bespoke jewellery gift cards, perfect for any special occasion or celebration.
+                </p>
               </div>
             </FadeIn>
           </div>
