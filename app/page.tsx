@@ -213,33 +213,43 @@ export default function Home() {
 
       <section id="contact" className="py-20 px-6 bg-gradient-to-br from-dark-purple to-gray-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            Let&apos;s Create Something Beautiful
-          </h2>
-          <p className="text-sm md:text-base lg:text-lg text-gray-200 text-center max-w-3xl mx-auto mb-12">
-            Get in touch to start your bespoke jewellery journey
-          </p>
+          <FadeIn>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+              Let&apos;s Create Something Beautiful
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="text-sm md:text-base lg:text-lg text-gray-200 text-center max-w-3xl mx-auto mb-12">
+              Get in touch to start your bespoke jewellery journey
+            </p>
+          </FadeIn>
           
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <a href="mailto:andy@manxcrowndiamonds.com" className="bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl p-8 transition-all border border-white/20 group">
+            <FadeIn delay={0.2} className="block">
+              <a href="mailto:andy@manxcrowndiamonds.com" className="block bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl p-8 transition-all border border-white/20 group">
               <Mail className="w-12 h-12 mx-auto mb-4 text-antique-gold group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold mb-2">Email</h3>
               <p className="text-sm md:text-base lg:text-lg">andy@manxcrowndiamonds.com</p>
-            </a>
+              </a>
+            </FadeIn>
             
-            <a href="tel:+447624368505" className="bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl p-8 transition-all border border-white/20 group">
+            <FadeIn delay={0.3} className="block">
+              <a href="tel:+447624368505" className="block bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl p-8 transition-all border border-white/20 group">
               <Phone className="w-12 h-12 mx-auto mb-4 text-antique-gold group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold mb-2">Phone</h3>
               <p className="text-sm md:text-base lg:text-lg">+44 7624 368505</p>
-            </a>
+              </a>
+            </FadeIn>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
+          <FadeIn delay={0.4}>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
             <p className="text-sm md:text-base lg:text-lg text-gray-200">
               <span className="font-semibold text-white">Based in the Isle of Man</span><br />
-              Serving clients locally and internationally
+              We offer flexible appointment times to suit your schedule
             </p>
-          </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
