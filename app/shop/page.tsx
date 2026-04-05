@@ -5,6 +5,7 @@ import { Search, Filter, X } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
+import FadeIn from '@/components/FadeIn';
 import { getProducts } from '@/lib/products';
 import { ProductCategory } from '@/lib/types';
 
@@ -63,17 +64,20 @@ export default function ShopPage() {
       </header>
 
       <div className="px-6 py-12">
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-purple mb-4">
-            Our Collection
-          </h1>
-          <p className="text-sm md:text-base lg:text-lg text-gray-600">
-            Browse our exquisite selection of fine jewellery and luxury timepieces
-          </p>
-        </div>
+        <FadeIn>
+          <div className="mb-8">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-purple mb-4">
+              Our Collection
+            </h1>
+            <p className="text-sm md:text-base lg:text-lg text-gray-600">
+              Browse our exquisite selection of fine jewellery and luxury timepieces
+            </p>
+          </div>
+        </FadeIn>
 
-        <div className="mb-8 flex flex-col md:flex-row gap-4">
-          <div className="flex-1 relative">
+        <FadeIn delay={0.1}>
+          <div className="mb-8 flex flex-col md:flex-row gap-4">
+            <div className="flex-1 relative">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input
               type="text"
@@ -90,11 +94,13 @@ export default function ShopPage() {
             <Filter className="w-5 h-5" />
             Filters
           </button>
-        </div>
+          </div>
+        </FadeIn>
 
         <div className="flex flex-col md:flex-row gap-8">
-          <aside className={`md:w-64 ${showFilters ? 'block' : 'hidden md:block'}`}>
-            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-24">
+          <FadeIn delay={0.2} className="block md:w-64">
+            <aside className={`${showFilters ? 'block' : 'hidden md:block'}`}>
+              <div className="bg-white rounded-xl shadow-lg p-6 sticky top-24">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-serif font-bold text-dark-purple">Filters</h2>
                 <button
@@ -161,8 +167,9 @@ export default function ShopPage() {
                   </label>
                 </div>
               </div>
-            </div>
-          </aside>
+              </div>
+            </aside>
+          </FadeIn>
 
           <main className="flex-1">
             <div className="mb-6 flex justify-between items-center">
@@ -182,11 +189,13 @@ export default function ShopPage() {
                 </button>
               </div>
             ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {filteredProducts.map(product => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
+              <FadeIn delay={0.3}>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {filteredProducts.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </FadeIn>
             )}
           </main>
         </div>
