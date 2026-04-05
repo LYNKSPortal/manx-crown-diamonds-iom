@@ -14,18 +14,20 @@ export default function Home() {
               <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-12 md:h-16" />
             </a>
           </FadeIn>
-          <FadeIn delay={0.1} className="inline-flex">
-            <nav className="hidden md:flex gap-8 items-center text-sm md:text-base lg:text-lg">
-              <a href="/" className="hover:text-diamond-gold transition-colors">Home</a>
-              <a href="/shop" className="hover:text-diamond-gold transition-colors">Shop</a>
-              <a href="/sourcing" className="hover:text-diamond-gold transition-colors">Sourcing</a>
-              <a href="/gift-cards" className="hover:text-diamond-gold transition-colors">Gift Cards</a>
-              <a href="/contact" className="bg-antique-gold text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition-all">Contact Us</a>
-            </nav>
-          </FadeIn>
-          <FadeIn delay={0.1} className="inline-flex">
-            <MobileMenu currentPage="/" />
-          </FadeIn>
+          <div className="flex items-center gap-8">
+            <FadeIn delay={0.1} className="inline-flex">
+              <nav className="hidden md:flex gap-8 items-center text-sm md:text-base lg:text-lg">
+                <a href="/" className="hover:text-diamond-gold transition-colors">Home</a>
+                <a href="/shop" className="hover:text-diamond-gold transition-colors">Shop</a>
+                <a href="/sourcing" className="hover:text-diamond-gold transition-colors">Sourcing</a>
+                <a href="/gift-cards" className="hover:text-diamond-gold transition-colors">Gift Cards</a>
+                <a href="/contact" className="bg-antique-gold text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition-all">Contact Us</a>
+              </nav>
+            </FadeIn>
+            <FadeIn delay={0.1} className="inline-flex">
+              <MobileMenu currentPage="/" />
+            </FadeIn>
+          </div>
         </div>
       </header>
 
