@@ -55,13 +55,16 @@ export default function SourcingPage() {
               Why Choose Our Sourcing Service?
             </h2>
           </FadeIn>
-          <p className="text-sm md:text-base lg:text-lg text-gray-700 text-center max-w-3xl mx-auto mb-12">
-            With our extensive network of trusted suppliers worldwide, we can source any type of jewellery or timepiece you&apos;re looking for. 
-            From diamonds and gemstones to luxury watches and bespoke pieces, we handle everything from search to authentication.
-          </p>
+          <FadeIn delay={0.1}>
+            <p className="text-sm md:text-base lg:text-lg text-gray-700 text-center max-w-3xl mx-auto mb-12">
+              With our extensive network of trusted suppliers worldwide, we can source any type of jewellery or timepiece you&apos;re looking for. 
+              From diamonds and gemstones to luxury watches and bespoke pieces, we handle everything from search to authentication.
+            </p>
+          </FadeIn>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow">
+            <FadeIn delay={0.2}>
+              <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow">
               <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Globe className="w-10 h-10 text-antique-gold" />
               </div>
@@ -89,12 +92,14 @@ export default function SourcingPage() {
               <p className="text-sm md:text-base lg:text-lg text-gray-600">
                 Transparent pricing, secure transactions, and full documentation for peace of mind throughout the process.
               </p>
-            </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-16">
-          <h2 className="text-3xl font-serif font-bold text-diamond-blue mb-8 text-center">
+        <FadeIn delay={0.5}>
+          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-16">
+            <h2 className="text-3xl font-serif font-bold text-diamond-blue mb-8 text-center">
             How Our Sourcing Service Works
           </h2>
 
@@ -174,11 +179,13 @@ export default function SourcingPage() {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+        </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div className="bg-dark-purple text-white rounded-xl p-8">
-            <h2 className="text-2xl font-serif font-bold mb-6">What We Can Source</h2>
+          <FadeIn delay={0.6}>
+            <div className="bg-dark-purple text-white rounded-xl p-8">
+              <h2 className="text-2xl font-serif font-bold mb-6">What We Can Source</h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-antique-gold flex-shrink-0 mt-0.5" />
@@ -205,39 +212,43 @@ export default function SourcingPage() {
                 <span className="text-sm md:text-base lg:text-lg">Custom or hard-to-find pieces</span>
               </li>
             </ul>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-serif font-bold text-dark-purple mb-6">Our Commitment</h2>
-            <div className="space-y-4 text-sm md:text-base lg:text-lg text-gray-700">
-              <p>
-                <strong className="text-dark-purple">Transparency:</strong> We provide full disclosure of all costs, 
-                including sourcing fees, import duties, and any applicable taxes.
-              </p>
-              <p>
-                <strong className="text-dark-purple">Authenticity:</strong> Every item comes with legitimate 
-                certification and authentication from recognized institutes and experts.
-              </p>
-              <p>
-                <strong className="text-dark-purple">Ethical Sourcing:</strong> We only work with reputable suppliers who adhere 
-                to ethical trade practices and industry standards.
-              </p>
-              <p>
-                <strong className="text-dark-purple">Expert Guidance:</strong> Andy personally oversees every sourcing 
-                request, bringing years of industry experience and expertise.
-              </p>
             </div>
-          </div>
+          </FadeIn>
+
+          <FadeIn delay={0.7}>
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h2 className="text-2xl font-serif font-bold text-dark-purple mb-6">Our Commitment</h2>
+              <div className="space-y-4 text-sm md:text-base lg:text-lg text-gray-700">
+                <p>
+                  <strong className="text-dark-purple">Transparency:</strong> We provide full disclosure of all costs, 
+                  including sourcing fees, import duties, and any applicable taxes.
+                </p>
+                <p>
+                  <strong className="text-dark-purple">Authenticity:</strong> Every item comes with legitimate 
+                  certification and authentication from recognized institutes and experts.
+                </p>
+                <p>
+                  <strong className="text-dark-purple">Ethical Sourcing:</strong> We only work with reputable suppliers who adhere 
+                  to ethical trade practices and industry standards.
+                </p>
+                <p>
+                  <strong className="text-dark-purple">Expert Guidance:</strong> Andy personally oversees every sourcing 
+                  request, bringing years of industry experience and expertise.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 text-center">
-          <Gem className="w-16 h-16 mx-auto mb-6 text-dark-purple" />
-          <h2 className="text-3xl font-serif font-bold text-dark-purple mb-4">
-            Ready to Find Your Perfect Piece?
-          </h2>
-          <p className="text-sm md:text-base lg:text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-            Whether it&apos;s a rare diamond, a specific luxury watch, or a unique gemstone, our global network allows us to find exactly what you&apos;re looking for. We&apos;re here to help. 
-            Contact us today to start your sourcing journey.
+        <FadeIn delay={0.8}>
+          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 text-center">
+            <Gem className="w-16 h-16 mx-auto mb-6 text-dark-purple" />
+            <h2 className="text-3xl font-serif font-bold text-dark-purple mb-4">
+              Ready to Find Your Perfect Piece?
+            </h2>
+            <p className="text-sm md:text-base lg:text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+              Whether it&apos;s a rare diamond, a specific luxury watch, or a unique gemstone, our global network allows us to find exactly what you&apos;re looking for. We&apos;re here to help. 
+              Contact us today to start your sourcing journey.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -264,7 +275,8 @@ export default function SourcingPage() {
               <strong>Phone:</strong> <a href="tel:+447624368505" className="text-dark-purple hover:underline">+44 7624 368505</a>
             </p>
           </div>
-        </div>
+          </div>
+        </FadeIn>
       </div>
 
       <Footer />
