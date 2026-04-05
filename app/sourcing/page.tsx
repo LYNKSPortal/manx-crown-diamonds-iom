@@ -1,6 +1,7 @@
 import { Globe, Award, Shield, CheckCircle, Mail, Phone, Gem } from 'lucide-react';
 import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
+import FadeIn from '@/components/FadeIn';
 
 export default function SourcingPage() {
   return (
@@ -23,21 +24,29 @@ export default function SourcingPage() {
 
       <section className="relative bg-gradient-to-br from-dark-purple to-gray-900 text-white py-20 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <Globe className="w-20 h-20 mx-auto mb-6 text-antique-gold" />
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">
-            Global Jewellery Sourcing
-          </h1>
-          <p className="text-base md:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto">
-            Let&apos;s discuss your sourcing needs and find exactly what you&apos;re looking for from the world&apos;s most prestigious suppliers
-          </p>
+          <FadeIn>
+            <Globe className="w-20 h-20 mx-auto mb-6 text-antique-gold" />
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">
+              Global Jewellery Sourcing
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="text-base md:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto">
+              Let&apos;s discuss your sourcing needs and find exactly what you&apos;re looking for from the world&apos;s most prestigious suppliers
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-diamond-blue mb-6 text-center">
-            Why Choose Our Sourcing Service?
-          </h2>
+          <FadeIn>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-diamond-blue mb-6 text-center">
+              Why Choose Our Sourcing Service?
+            </h2>
+          </FadeIn>
           <p className="text-sm md:text-base lg:text-lg text-gray-700 text-center max-w-3xl mx-auto mb-12">
             With our extensive network of trusted suppliers worldwide, we can source any type of jewellery or timepiece you&apos;re looking for. 
             From diamonds and gemstones to luxury watches and bespoke pieces, we handle everything from search to authentication.
