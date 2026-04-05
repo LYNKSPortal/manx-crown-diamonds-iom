@@ -18,3 +18,16 @@ body {
 .font-sans {
   font-family: var(--font-inter);
 }
+
+/* Fade-in animation styles */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
