@@ -87,7 +87,7 @@ export default function GiftCardsPage() {
               The Perfect Gift
             </h2>
             <p className="text-sm md:text-base lg:text-lg text-gray-700 mb-6 leading-relaxed">
-              A Manx Crown Diamonds gift card is the perfect way to celebrate life's special moments. Whether it's for an 
+              A Manx Crown Diamonds gift card is the perfect way to celebrate life&apos;s special moments. Whether it&apos;s for an 
               engagement, anniversary, birthday, or any special occasion, let your loved ones choose their perfect piece 
               of jewellery.
             </p>
@@ -136,7 +136,7 @@ export default function GiftCardsPage() {
                 <div>
                   <h3 className="font-bold text-gray-900 mb-2">No Expiry</h3>
                   <p className="text-sm md:text-base lg:text-lg text-gray-600">
-                    Our gift cards never expire, giving recipients the freedom to choose when they're ready.
+                    Our gift cards never expire, giving your loved ones the freedom to choose when they&apos;re ready to find their perfect piece.
                   </p>
                 </div>
               </div>

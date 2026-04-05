@@ -127,7 +127,7 @@ export default function Home() {
             Our Services
           </h2>
           <p className="text-sm md:text-base lg:text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">
-            From sourcing to creation, we're with you every step of the way
+            From sourcing to creation, we&apos;re with you every step of the way
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
