@@ -7,7 +7,7 @@ import { getProducts } from '@/lib/products'
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <header className="bg-dark-purple text-white py-6 px-6 sticky top-0 z-50 shadow-lg fade-in fade-in-visible" style={{transitionDuration: '0.6s'}}>
+      <header className="bg-dark-purple text-white py-6 px-6 sticky top-0 z-50 shadow-lg header-fade">
         <div className="flex justify-between items-center">
           <a href="/" className="flex items-center">
             <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-12 md:h-16" />
