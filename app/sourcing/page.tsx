@@ -28,7 +28,7 @@ export default function SourcingPage() {
             Global Jewellery Sourcing
           </h1>
           <p className="text-base md:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto">
-            Let us find the perfect piece for you from the world's most prestigious suppliers
+            Let&apos;s discuss your sourcing needs and find exactly what you&apos;re looking for from the world&apos;s most prestigious suppliers
           </p>
         </div>
       </section>
@@ -39,7 +39,7 @@ export default function SourcingPage() {
             Why Choose Our Sourcing Service?
           </h2>
           <p className="text-sm md:text-base lg:text-lg text-gray-700 text-center max-w-3xl mx-auto mb-12">
-            With our extensive network of trusted suppliers worldwide, we can source any type of jewellery or timepiece you're looking for. 
+            With our extensive network of trusted suppliers worldwide, we can source any type of jewellery or timepiece you&apos;re looking for. 
             From diamonds and gemstones to luxury watches and bespoke pieces, we handle everything from search to authentication.
           </p>
 
@@ -91,8 +91,8 @@ export default function SourcingPage() {
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Initial Consultation</h3>
                 <p className="text-sm md:text-base lg:text-lg text-gray-700">
-                  Contact us to discuss your requirements. Tell us about the jewellery, watch, or gemstone you're looking for – 
-                  style, specifications, and your budget. We'll guide you through the options and help refine your requirements.
+                  Contact us to discuss your requirements. Tell us about the jewellery, watch, or gemstone you&apos;re looking for – 
+                  Looking for something specific that you can&apos;t find? We can source it for you. Budget. We&apos;ll guide you through the options and help refine your requirements.
                 </p>
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function SourcingPage() {
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Secure Acquisition</h3>
                 <p className="text-sm md:text-base lg:text-lg text-gray-700">
-                  Once you've chosen your diamond, we handle the secure acquisition and import process. All transactions are 
+                  Once you&apos;ve chosen your diamond, we handle the secure acquisition and import process. All transactions are 
                   fully insured and documented.
                 </p>
               </div>
@@ -165,7 +165,7 @@ export default function SourcingPage() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-antique-gold flex-shrink-0 mt-0.5" />
-                <span className="text-sm md:text-base lg:text-lg">Natural diamonds of all cuts and sizes</span>
+                <span className="text-sm md:text-base lg:text-lg">You tell us what you&apos;re looking for, including specifications, budget, and timeline.</span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-antique-gold flex-shrink-0 mt-0.5" />
@@ -173,7 +173,7 @@ export default function SourcingPage() {
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-antique-gold flex-shrink-0 mt-0.5" />
-                <span className="text-sm md:text-base lg:text-lg">Rare and unique gemstones (sapphires, emeralds, rubies, etc.)</span>
+                <span className="text-sm md:text-base lg:text-lg">We&apos;ll present you with options that match your criteria, complete with full details and pricing.</span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-antique-gold flex-shrink-0 mt-0.5" />
@@ -219,7 +219,7 @@ export default function SourcingPage() {
             Ready to Find Your Perfect Piece?
           </h2>
           <p className="text-sm md:text-base lg:text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-            Whether you're looking for a specific piece of jewellery, a luxury watch, or need guidance on what to choose, we're here to help. 
+            Whether it&apos;s a rare diamond, a specific luxury watch, or a unique gemstone, our global network allows us to find exactly what you&apos;re looking for. We&apos;re here to help. 
             Contact us today to start your sourcing journey.
           </p>
           

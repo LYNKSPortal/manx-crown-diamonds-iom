@@ -30,21 +30,21 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-4">1. Agreement to Terms</h2>
             <p className="text-gray-700 leading-relaxed">
-              By accessing or using the Manx Crown Diamonds website and services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
+              These Terms of Service (&quot;Terms&quot;) govern your use of the Manx Crown Diamonds website. and services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-4">2. Use License</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Permission is granted to temporarily view the materials on Manx Crown Diamonds' website for personal, non-commercial use only. This is the grant of a license, not a transfer of title, and under this license you may not:
+              Permission is granted to temporarily view the materials on Manx Crown Diamonds&apos; website for personal, non-commercial use only. This is the grant of a license, not a transfer of title, and under this license you may not:
             </p>
             <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
               <li>Modify or copy the materials</li>
               <li>Use the materials for any commercial purpose or public display</li>
               <li>Attempt to decompile or reverse engineer any software on the website</li>
               <li>Remove any copyright or proprietary notations from the materials</li>
-              <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+              <li>Transfer the materials to another person or &quot;mirror&quot; the materials on any other server</li>
             </ul>
           </section>
 
@@ -107,7 +107,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-4">9. Accuracy of Materials</h2>
             <p className="text-gray-700 leading-relaxed">
-              The materials appearing on Manx Crown Diamonds' website could include technical, typographical, or photographic errors. We do not warrant that any of the materials on our website are accurate, complete, or current. We may make changes to the materials at any time without notice.
+              The materials appearing on Manx Crown Diamonds&apos; website could include technical, typographical, or photographic errors. We do not warrant that any of the materials on our website are accurate, complete, or current. We may make changes to the materials at any time without notice.
             </p>
           </section>
 
@@ -135,7 +135,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-4">13. Modifications to Terms</h2>
             <p className="text-gray-700 leading-relaxed">
-              We reserve the right to revise these Terms of Service at any time without notice. By using this website, you are agreeing to be bound by the current version of these Terms of Service.
+              We reserve the right to refuse service to anyone for any reason at any time. We may, but have no obligation to, remove content and accounts that we determine in our sole discretion are unlawful, offensive, threatening, libelous, defamatory, pornographic, obscene or otherwise objectionable or violates any party&apos;s intellectual property.
             </p>
           </section>
 
