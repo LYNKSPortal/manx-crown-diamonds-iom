@@ -172,11 +172,13 @@ export default function ShopPage() {
           </FadeIn>
 
           <main className="flex-1">
-            <div className="mb-6 flex justify-between items-center">
-              <p className="text-gray-600">
-                Showing <span className="font-semibold text-diamond-blue">{filteredProducts.length}</span> products
-              </p>
-            </div>
+            <FadeIn delay={0.3}>
+              <div className="mb-6 flex justify-between items-center">
+                <p className="text-gray-600">
+                  Showing <span className="font-semibold text-diamond-blue">{filteredProducts.length}</span> products
+                </p>
+              </div>
+            </FadeIn>
 
             {filteredProducts.length === 0 ? (
               <div className="text-center py-16">
