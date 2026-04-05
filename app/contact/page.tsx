@@ -68,18 +68,21 @@ export default function ContactPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-purple mb-4">
-            Get in Touch
-          </h1>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600">
-            Let's discuss your bespoke jewellery dreams
-          </p>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-purple mb-4">
+              Get in Touch
+            </h1>
+            <p className="text-base md:text-lg lg:text-xl text-gray-600">
+              Let's discuss your bespoke jewellery dreams
+            </p>
+          </div>
+        </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div>
-            <h2 className="text-2xl font-serif font-bold text-dark-purple mb-6">
+          <FadeIn delay={0.1}>
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-dark-purple mb-6">
               Contact Information
             </h2>
             <div className="space-y-6">
@@ -129,7 +132,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="mt-8 bg-dark-purple text-white p-8 rounded-xl">
+            <FadeIn delay={0.2}>
+              <div className="mt-8 bg-dark-purple text-white p-8 rounded-xl">
               <h3 className="text-xl font-serif font-bold mb-4">Why Contact Us?</h3>
               <ul className="space-y-3 text-sm md:text-base lg:text-lg">
                 <li className="flex items-start gap-3">
@@ -149,11 +153,14 @@ export default function ContactPage() {
                   <span>Learn about our certification process</span>
                 </li>
               </ul>
+              </div>
+            </FadeIn>
             </div>
-          </div>
+          </FadeIn>
 
-          <div>
-            <div className="bg-white p-8 rounded-xl shadow-lg">
+          <FadeIn delay={0.3}>
+            <div>
+              <div className="bg-white p-8 rounded-xl shadow-lg">
               <h2 className="text-2xl font-serif font-bold text-dark-purple mb-6">
                 Send us a Message
               </h2>
@@ -257,14 +264,16 @@ export default function ContactPage() {
                   Note: This is a demo form. In production, this would send an email or save to a database.
                 </p>
               </form>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-6 text-center">
-            About Manx Crown Diamonds
-          </h2>
+        <FadeIn delay={0.4}>
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-6 text-center">
+              About Manx Crown Diamonds
+            </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="bg-dark-purple w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -294,7 +303,8 @@ export default function ContactPage() {
               </p>
             </div>
           </div>
-        </div>
+          </div>
+        </FadeIn>
       </div>
 
       <Footer />
