@@ -79,22 +79,29 @@ export default function GiftCardsPage() {
 
       <section className="relative bg-gradient-to-br from-dark-purple to-gray-900 text-white py-20 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <Gift className="w-20 h-20 mx-auto mb-6 text-antique-gold" />
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">
-            Gift Cards
-          </h1>
-          <p className="text-base md:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto">
-            Give the gift of luxury and let them choose their perfect piece
-          </p>
+          <FadeIn>
+            <Gift className="w-20 h-20 mx-auto mb-6 text-antique-gold" />
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">
+              Gift Cards
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="text-base md:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto">
+              Give the gift of luxury and let them choose their perfect piece
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div>
-            <h2 className="text-3xl font-serif font-bold text-diamond-blue mb-6">
-              The Perfect Gift
-            </h2>
+          <FadeIn delay={0.3}>
+            <div>
+              <h2 className="text-3xl font-serif font-bold text-diamond-blue mb-6">
+                The Perfect Gift
+              </h2>
             <p className="text-sm md:text-base lg:text-lg text-gray-700 mb-6 leading-relaxed">
               A Manx Crown Diamonds gift card is the perfect way to celebrate life&apos;s special moments. Whether it&apos;s for an 
               engagement, anniversary, birthday, or any special occasion, let your loved ones choose their perfect piece 
@@ -150,9 +157,11 @@ export default function GiftCardsPage() {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+          </FadeIn>
 
-          <div className="bg-white rounded-xl shadow-2xl p-8">
+          <FadeIn delay={0.4}>
+            <div className="bg-white rounded-xl shadow-2xl p-8">
             <div className="flex items-center gap-3 mb-6">
               <CreditCard className="w-8 h-8 text-dark-purple" />
               <h2 className="text-2xl font-serif font-bold text-dark-purple">
@@ -357,11 +366,13 @@ export default function GiftCardsPage() {
                 Request Gift Card
               </button>
             </form>
-          </div>
+            </div>
+          </FadeIn>
         </div>
 
-        <div className="bg-dark-purple text-white rounded-xl p-8 md:p-12">
-          <h2 className="text-3xl font-serif font-bold mb-6 text-center">How It Works</h2>
+        <FadeIn delay={0.5}>
+          <div className="bg-dark-purple text-white rounded-xl p-8 md:p-12">
+            <h2 className="text-3xl font-serif font-bold mb-6 text-center">How It Works</h2>
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="bg-antique-gold text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">
@@ -400,15 +411,17 @@ export default function GiftCardsPage() {
               </p>
             </div>
           </div>
-        </div>
+          </div>
+        </FadeIn>
 
-        <div className="mt-16 text-center">
-          <h2 className="text-2xl font-serif font-bold text-dark-purple mb-4">
-            Questions About Gift Cards?
-          </h2>
-          <p className="text-sm md:text-base lg:text-lg text-gray-700 mb-6">
-            Our team is here to help with any questions about purchasing or using gift cards.
-          </p>
+        <FadeIn delay={0.6}>
+          <div className="mt-16 text-center">
+            <h2 className="text-2xl font-serif font-bold text-dark-purple mb-4">
+              Questions About Gift Cards?
+            </h2>
+            <p className="text-sm md:text-base lg:text-lg text-gray-700 mb-6">
+              Our team is here to help with any questions about purchasing or using gift cards.
+            </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:andy@manxcrowndiamonds.com"
@@ -425,7 +438,8 @@ export default function GiftCardsPage() {
               +44 7624 368505
             </a>
           </div>
-        </div>
+          </div>
+        </FadeIn>
       </div>
 
       <Footer />
