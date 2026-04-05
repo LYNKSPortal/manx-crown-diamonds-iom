@@ -7,8 +7,8 @@ import { getProducts } from '@/lib/products'
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <header className="bg-dark-purple text-white py-6 px-6 sticky top-0 z-50 shadow-lg">
-        <div className="flex justify-between items-center">
+      <header className="bg-dark-purple text-white py-6 sticky top-0 z-50 shadow-lg w-full">
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <FadeIn delay={0} className="inline-flex">
             <a href="/" className="flex items-center">
               <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-12 md:h-16" />
