@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-4">1. Introduction</h2>
             <p className="text-gray-700 leading-relaxed">
-              Manx Crown Diamonds ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or engage with our services.
+              Manx Crown Diamonds (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or engage with our services.
             </p>
           </section>
 
@@ -130,14 +130,14 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-4">10. Changes to This Privacy Policy</h2>
             <p className="text-gray-700 leading-relaxed">
-              We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
+              We reserve the right to make changes to this Privacy Policy at any time. We will notify you of any changes by updating the &quot;Last Updated&quot; date at the top of this Privacy Policy. on this page and updating the "Last updated" date.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-4">11. Contact Us</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              If you have any questions about this Privacy Policy, please contact us:
+              If you have questions or comments about this Privacy Policy, please contact us at:
             </p>
             <div className="bg-blue-50 p-6 rounded-lg">
               <p className="text-gray-700"><strong>Email:</strong> <a href="mailto:andy@manxcrowndiamonds.com" className="text-diamond-blue hover:underline">andy@manxcrowndiamonds.com</a></p>
