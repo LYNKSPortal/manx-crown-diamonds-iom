@@ -9,17 +9,19 @@ export default function Home() {
     <main className="min-h-screen">
       <header className="bg-dark-purple text-white py-6 px-6 sticky top-0 z-50 shadow-lg">
         <div className="flex justify-between items-center">
-          <a href="/" className="flex items-center">
+          <a href="/" className="flex items-center fade-in fade-in-visible">
             <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-12 md:h-16" />
           </a>
-          <nav className="hidden md:flex gap-8 items-center text-sm md:text-base lg:text-lg">
+          <nav className="hidden md:flex gap-8 items-center text-sm md:text-base lg:text-lg fade-in fade-in-visible" style={{transitionDelay: '0.1s'}}>
             <a href="/" className="hover:text-diamond-gold transition-colors">Home</a>
             <a href="/shop" className="hover:text-diamond-gold transition-colors">Shop</a>
             <a href="/sourcing" className="hover:text-diamond-gold transition-colors">Sourcing</a>
             <a href="/gift-cards" className="hover:text-diamond-gold transition-colors">Gift Cards</a>
             <a href="/contact" className="bg-antique-gold text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition-all">Contact Us</a>
           </nav>
-          <MobileMenu currentPage="/" />
+          <div className="fade-in fade-in-visible" style={{transitionDelay: '0.1s'}}>
+            <MobileMenu currentPage="/" />
+          </div>
         </div>
       </header>
 
