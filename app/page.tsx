@@ -52,56 +52,69 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-diamond-blue">
-                Welcome to Manx Crown Diamonds
-              </h2>
-              <p className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed mb-6">
-                At Manx Crown Diamonds, we specialise in creating bespoke diamond jewellery pieces that tell your unique story. 
-                Based on the Isle of Man, we combine traditional craftsmanship with modern design to create timeless pieces 
-                that celebrate life&apos;s most precious moments.
-              </p>
-              <p className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed">
-                Whether you&apos;re looking for the perfect engagement ring or a custom piece, we&apos;re here to help
-              </p>
+              <FadeIn>
+                <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-diamond-blue">
+                  Welcome to Manx Crown Diamonds
+                </h2>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <p className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed mb-6">
+                  At Manx Crown Diamonds, we specialise in creating bespoke diamond jewellery pieces that tell your unique story. 
+                  Based on the Isle of Man, we combine traditional craftsmanship with modern design to create timeless pieces 
+                  that celebrate life&apos;s most precious moments.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <p className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed">
+                  Whether you&apos;re looking for the perfect engagement ring or a custom piece, we&apos;re here to help
+                </p>
+              </FadeIn>
             </div>
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/images/meet-andy.jpg" 
-                  alt="Andy Asbridge - Owner of Manx Crown Diamonds" 
-                  className="w-full h-full object-cover"
-                />
+            <FadeIn delay={0.3}>
+              <div className="relative">
+                <div className="rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
+                    src="/images/meet-andy.jpg" 
+                    alt="Andy Asbridge - Owner of Manx Crown Diamonds" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       <section id="collections" className="py-20 px-6" style={{background: 'linear-gradient(to bottom, #D4A574, #BB8F6A)'}}>
         <div className="w-full">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-center mb-4 text-white">
-            Our Collections
-          </h2>
-          <p className="text-sm md:text-base lg:text-lg text-white text-center max-w-3xl mx-auto mb-12">
-            Discover our carefully curated collections of exquisite diamond jewellery
-          </p>
+          <FadeIn>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-center mb-4 text-white">
+              Our Collections
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="text-sm md:text-base lg:text-lg text-white text-center max-w-3xl mx-auto mb-12">
+              Discover our carefully curated collections of exquisite diamond jewellery
+            </p>
+          </FadeIn>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {getProducts().slice(-4).reverse().map((product) => (
-              <a key={product.id} href={`/shop/${product.id}`} className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="relative h-64 bg-gradient-to-br from-dark-purple to-gray-800 flex items-center justify-center">
-                  <Gem className="w-24 h-24 text-antique-gold group-hover:scale-110 transition-transform" />
-                  {!product.inStock && (
-                    <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      Out of Stock
-                    </div>
-                  )}
-                  {product.featured && (
-                    <div className="absolute top-4 left-4 bg-antique-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      Featured
-                    </div>
-                  )}
-                </div>
+            {getProducts().slice(-4).reverse().map((product, index) => (
+              <FadeIn key={product.id} delay={0.2 + index * 0.1}>
+                <a href={`/shop/${product.id}`} className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-64 bg-gradient-to-br from-dark-purple to-gray-800 flex items-center justify-center">
+                    <Gem className="w-24 h-24 text-antique-gold group-hover:scale-110 transition-transform" />
+                    {!product.inStock && (
+                      <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Out of Stock
+                      </div>
+                    )}
+                    {product.featured && (
+                      <div className="absolute top-4 left-4 bg-antique-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Featured
+                      </div>
+                    )}
+                  </div>
                 <div className="p-6">
                   <h3 className="text-xl font-serif font-bold mb-2 text-dark-purple group-hover:text-opacity-80 transition-colors">
                     {product.name}
@@ -118,29 +131,37 @@ export default function Home() {
                     </span>
                   </div>
                 </div>
-              </a>
+                </a>
+              </FadeIn>
             ))}
           </div>
 
-          <div className="text-center">
-            <a href="/shop" className="inline-block bg-white text-dark-purple px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
-              View More Items
-            </a>
-          </div>
+          <FadeIn delay={0.6}>
+            <div className="text-center">
+              <a href="/shop" className="inline-block bg-white text-dark-purple px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+                View More Items
+              </a>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       <section id="services" className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-center mb-4 text-diamond-blue">
-            Our Services
-          </h2>
-          <p className="text-sm md:text-base lg:text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">
-            From sourcing to creation, we&apos;re with you every step of the way
-          </p>
+          <FadeIn>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-center mb-4 text-diamond-blue">
+              Our Services
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="text-sm md:text-base lg:text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">
+              From sourcing to creation, we&apos;re with you every step of the way
+            </p>
+          </FadeIn>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center p-8 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-gray-100 hover:border-antique-gold transition-all">
+            <FadeIn delay={0.2}>
+              <div className="text-center p-8 bg-gradient-to-b from-gray-50 to-white rounded-xl border-2 border-gray-100 hover:border-antique-gold transition-all">
               <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="w-10 h-10 text-antique-gold" />
               </div>
@@ -178,7 +199,8 @@ export default function Home() {
               <p className="text-sm md:text-base lg:text-lg text-gray-600">
                 Give the gift of choice with our bespoke jewellery gift cards, perfect for any special occasion or celebration.
               </p>
-            </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
