@@ -49,10 +49,10 @@ export default function Home() {
               <p className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed mb-6">
                 At Manx Crown Diamonds, we specialise in creating bespoke diamond jewellery pieces that tell your unique story. 
                 Based on the Isle of Man, we combine traditional craftsmanship with modern design to create timeless pieces 
-                that celebrate life's most precious moments.
+                that celebrate life&apos;s most precious moments.
               </p>
               <p className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed">
-                Whether you're looking for the perfect engagement ring or a custom piece, we're here to help
+                Whether you&apos;re looking for the perfect engagement ring or a custom piece, we&apos;re here to help
               </p>
             </div>
             <div className="relative">
@@ -177,7 +177,7 @@ export default function Home() {
       <section id="contact" className="py-20 px-6 bg-gradient-to-br from-dark-purple to-gray-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            Let's Create Something Beautiful
+            Let&apos;s Create Something Beautiful
           </h2>
           <p className="text-sm md:text-base lg:text-lg text-gray-200 text-center max-w-3xl mx-auto mb-12">
             Get in touch to start your bespoke jewellery journey
