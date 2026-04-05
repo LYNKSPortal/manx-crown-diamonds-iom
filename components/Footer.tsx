@@ -1,22 +1,18 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
-import FadeIn from './FadeIn';
 
 export default function Footer() {
   return (
     <footer className="bg-dark-purple text-gray-300">
       <div className="px-6 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <FadeIn className="block">
-            <div className="text-center">
-              <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-16 mb-4 mx-auto" />
+          <div className="text-center">
+            <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-16 mb-4 mx-auto" />
             <p className="text-sm md:text-base lg:text-lg text-gray-400 leading-relaxed">
               Specialising in bespoke jewellery, certified diamonds, and luxury timepieces. Combining traditional craftsmanship with modern design on the Isle of Man.
             </p>
-            </div>
-          </FadeIn>
+          </div>
 
-          <FadeIn delay={0.1} className="block">
-            <div className="text-center">
+          <div className="text-center">
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
@@ -76,12 +72,10 @@ export default function Footer() {
               alt="Conister Bank Approved Partner" 
               className="h-16 mx-auto"
             />
-            </div>
-          </FadeIn>
+          </div>
         </div>
 
-        <FadeIn delay={0.4}>
-          <div className="border-t border-gray-700 pt-8">
+        <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm md:text-base lg:text-lg text-gray-400">
               © {new Date().getFullYear()} Manx Crown Diamonds. All rights reserved.
@@ -95,8 +89,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          </div>
-        </FadeIn>
+        </div>
       </div>
     </footer>
   );
