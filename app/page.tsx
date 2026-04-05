@@ -14,7 +14,7 @@ export default function Home() {
               <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-12 md:h-16" />
             </a>
           </FadeIn>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center">
             <FadeIn delay={0.1} className="inline-flex">
               <nav className="hidden md:flex gap-8 items-center text-sm md:text-base lg:text-lg">
                 <a href="/" className="hover:text-diamond-gold transition-colors">Home</a>
