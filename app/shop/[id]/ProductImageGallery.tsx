@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ZoomIn, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ProductImageGalleryProps {
@@ -12,6 +13,11 @@ export default function ProductImageGallery({ images, productName }: ProductImag
   const [selectedImage, setSelectedImage] = useState(images[0] || '/images/image-coming-soon.jpg');
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -103,8 +109,8 @@ export default function ProductImageGallery({ images, productName }: ProductImag
       </div>
 
       {/* Fullscreen Lightbox */}
-      {isLightboxOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
+      {mounted && isLightboxOpen && createPortal(
+        <div className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center">
           {/* Close Button */}
           <button
             onClick={() => setIsLightboxOpen(false)}
@@ -172,7 +178,8 @@ export default function ProductImageGallery({ images, productName }: ProductImag
               ))}
             </div>
           )}
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
