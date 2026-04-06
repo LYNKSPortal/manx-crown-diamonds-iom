@@ -15,7 +15,7 @@ interface ShopClientProps {
 export default function ShopClient({ products }: ShopClientProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'all'>('all');
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 200000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000000]);
   const [showInStockOnly, setShowInStockOnly] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
@@ -43,7 +43,7 @@ export default function ShopClient({ products }: ShopClientProps) {
   const resetFilters = () => {
     setSearchQuery('');
     setSelectedCategory('all');
-    setPriceRange([0, 200000]);
+    setPriceRange([0, 1000000]);
     setShowInStockOnly(false);
   };
 
@@ -150,8 +150,8 @@ export default function ShopClient({ products }: ShopClientProps) {
                     <input
                       type="range"
                       min="0"
-                      max="200000"
-                      step="5000"
+                      max="1000000"
+                      step="10000"
                       value={priceRange[1]}
                       onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                       className="w-full accent-diamond-blue"
