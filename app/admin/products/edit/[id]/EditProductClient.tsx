@@ -31,6 +31,7 @@ export default function EditProductClient({ product }: EditProductClientProps) {
     in_stock: product.in_stock !== false,
     featured: product.featured || false,
     is_unique_item: product.is_unique_item || false,
+    is_under_offer: product.is_under_offer || false,
     material: product.material || '',
     gemstone: product.gemstone || '',
     certification: product.certification || '',
@@ -225,8 +226,8 @@ export default function EditProductClient({ product }: EditProductClientProps) {
                     <input
                       type="radio"
                       name="status"
-                      checked={formData.is_unique_item && formData.in_stock}
-                      onChange={() => setFormData({ ...formData, is_unique_item: true, in_stock: true })}
+                      checked={formData.is_unique_item && formData.in_stock && !formData.is_under_offer}
+                      onChange={() => setFormData({ ...formData, is_unique_item: true, in_stock: true, is_under_offer: false })}
                       className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-3"
                     />
                     <span className="text-gray-700">Available (unique/one-of-a-kind item)</span>
@@ -235,8 +236,18 @@ export default function EditProductClient({ product }: EditProductClientProps) {
                     <input
                       type="radio"
                       name="status"
-                      checked={formData.is_unique_item && !formData.in_stock}
-                      onChange={() => setFormData({ ...formData, is_unique_item: true, in_stock: false })}
+                      checked={formData.is_unique_item && formData.is_under_offer}
+                      onChange={() => setFormData({ ...formData, is_unique_item: true, in_stock: true, is_under_offer: true })}
+                      className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-3"
+                    />
+                    <span className="text-gray-700">Under Offer (in process of being sold)</span>
+                  </label>
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="status"
+                      checked={formData.is_unique_item && !formData.in_stock && !formData.is_under_offer}
+                      onChange={() => setFormData({ ...formData, is_unique_item: true, in_stock: false, is_under_offer: false })}
                       className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-3"
                     />
                     <span className="text-gray-700">Sold (unique/one-of-a-kind item)</span>

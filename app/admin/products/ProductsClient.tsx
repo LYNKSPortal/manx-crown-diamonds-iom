@@ -13,6 +13,7 @@ interface Product {
   in_stock: boolean;
   featured: boolean;
   is_unique_item?: boolean;
+  is_under_offer?: boolean;
   image_url?: string;
 }
 
@@ -160,7 +161,11 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
                     <span className="font-semibold text-gray-900">£{Number(product.price).toLocaleString()}</span>
                   </td>
                   <td className="px-6 py-4">
-                    {product.is_unique_item ? (
+                    {product.is_under_offer ? (
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800 w-fit">
+                        Under Offer
+                      </span>
+                    ) : product.is_unique_item ? (
                       product.in_stock ? (
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 w-fit">
                           Available

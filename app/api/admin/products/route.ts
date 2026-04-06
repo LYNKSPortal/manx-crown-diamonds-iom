@@ -42,6 +42,7 @@ export async function POST(request: NextRequest) {
       in_stock = true,
       featured = false,
       is_unique_item,
+      is_under_offer,
       material,
       gemstone,
       certification,
@@ -64,11 +65,11 @@ export async function POST(request: NextRequest) {
     // Insert product
     const result = await sql`
       INSERT INTO products (
-        id, name, description, price, category, in_stock, featured, is_unique_item,
+        id, name, description, price, category, in_stock, featured, is_unique_item, is_under_offer,
         material, gemstone, certification, weight, dimensions, image_url
       ) VALUES (
         ${id}, ${name}, ${description}, ${price}, ${category},
-        ${in_stock}, ${featured}, ${is_unique_item || false}, ${material}, ${gemstone},
+        ${in_stock}, ${featured}, ${is_unique_item || false}, ${is_under_offer || false}, ${material}, ${gemstone},
         ${certification}, ${weight}, ${dimensions}, ${image_url}
       )
       RETURNING *

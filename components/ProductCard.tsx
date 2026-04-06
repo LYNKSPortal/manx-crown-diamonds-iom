@@ -18,7 +18,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
-          {!product.inStock && (
+          {(product as any).is_under_offer ? (
+            <div className="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              Under Offer
+            </div>
+          ) : !product.inStock && (
             <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
               {(product as any).is_unique_item ? 'Sold' : 'Out of Stock'}
             </div>
