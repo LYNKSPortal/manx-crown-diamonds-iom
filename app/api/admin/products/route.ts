@@ -59,8 +59,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate ID
-    const id = `${category}-${Date.now()}`;
+    // Generate slug from product name
+    const slug = name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    
+    // Add timestamp suffix to ensure uniqueness
+    const id = `${slug}-${Date.now()}`;
 
     // Insert product
     const result = await sql`
