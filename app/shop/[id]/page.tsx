@@ -6,6 +6,9 @@ import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
 import FadeIn from '@/components/FadeIn';
 
+export const revalidate = 0; // Disable caching
+export const dynamic = 'force-dynamic'; // Force dynamic rendering
+
 export default async function ProductDetailPage({ params }: { params: { id: string } }) {
   const product = await getProductById(params.id);
 
