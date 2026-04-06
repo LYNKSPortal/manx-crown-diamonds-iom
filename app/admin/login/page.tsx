@@ -42,11 +42,11 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-dark-purple to-gray-900 flex items-center justify-center px-6">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-2xl p-8">
         <div className="text-center mb-8">
-          <div className="mb-6">
+          <div className="mb-6 bg-dark-purple rounded-lg p-4">
             <img 
-              src="/images/logo.png" 
+              src="/images/white-logo.png" 
               alt="Manx Crown Diamonds" 
-              className="h-20 mx-auto"
+              className="h-16 mx-auto"
             />
           </div>
           <h1 className="text-3xl font-serif font-bold text-dark-purple mb-2">
