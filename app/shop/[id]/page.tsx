@@ -49,8 +49,8 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
         <div className="grid md:grid-cols-2 gap-12">
           <FadeIn delay={0.1}>
-            <div className="bg-gradient-to-br from-dark-purple to-gray-800 rounded-2xl p-12 flex items-center justify-center shadow-2xl">
-            <Gem className="w-64 h-64 text-antique-gold" />
+            <div className="bg-gradient-to-br from-dark-purple to-gray-800 rounded-2xl aspect-square flex items-center justify-center shadow-2xl">
+            <Gem className="w-48 h-48 text-antique-gold" />
             </div>
           </FadeIn>
 
