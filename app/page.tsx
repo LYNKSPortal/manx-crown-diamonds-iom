@@ -111,7 +111,7 @@ export default function Home() {
             {getProducts().slice(-4).reverse().map((product, index) => (
               <FadeIn key={product.id} delay={0.2 + index * 0.1} className="block">
                 <a href={`/shop/${product.id}`} className="block group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                  <div className="relative h-64 bg-gradient-to-br from-dark-purple to-gray-800 flex items-center justify-center">
+                  <div className="relative aspect-square bg-gradient-to-br from-dark-purple to-gray-800 flex items-center justify-center">
                     <Gem className="w-24 h-24 text-antique-gold group-hover:scale-110 transition-transform" />
                     {!product.inStock && (
                       <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
