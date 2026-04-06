@@ -65,33 +65,37 @@ export default function SourcingPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <FadeIn delay={0.2}>
               <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow">
-              <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Globe className="w-10 h-10 text-antique-gold" />
+                <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Globe className="w-10 h-10 text-antique-gold" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Global Network</h3>
+                <p className="text-sm md:text-base lg:text-lg text-gray-600">
+                  Access to premium jewellery and watch suppliers across the globe, from Antwerp to Geneva, ensuring the best selection.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Global Network</h3>
-              <p className="text-sm md:text-base lg:text-lg text-gray-600">
-                Access to premium jewellery and watch suppliers across the globe, from Antwerp to Geneva, ensuring the best selection.
-              </p>
-            </div>
+            </FadeIn>
 
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow">
-              <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award className="w-10 h-10 text-antique-gold" />
+            <FadeIn delay={0.3}>
+              <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow">
+                <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Award className="w-10 h-10 text-antique-gold" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Certified Quality</h3>
+                <p className="text-sm md:text-base lg:text-lg text-gray-600">
+                  All items we source come with proper certification and authentication, guaranteeing authenticity and quality.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Certified Quality</h3>
-              <p className="text-sm md:text-base lg:text-lg text-gray-600">
-                All items we source come with proper certification and authentication, guaranteeing authenticity and quality.
-              </p>
-            </div>
+            </FadeIn>
 
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow">
-              <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Shield className="w-10 h-10 text-antique-gold" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Trusted Process</h3>
-              <p className="text-sm md:text-base lg:text-lg text-gray-600">
-                Transparent pricing, secure transactions, and full documentation for peace of mind throughout the process.
-              </p>
+            <FadeIn delay={0.4}>
+              <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow">
+                <div className="bg-dark-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Shield className="w-10 h-10 text-antique-gold" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Trusted Process</h3>
+                <p className="text-sm md:text-base lg:text-lg text-gray-600">
+                  Transparent pricing, secure transactions, and full documentation for peace of mind throughout the process.
+                </p>
               </div>
             </FadeIn>
           </div>
