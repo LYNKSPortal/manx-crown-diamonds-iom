@@ -110,7 +110,7 @@ export default function ProductImageGallery({ images, productName }: ProductImag
 
       {/* Fullscreen Lightbox */}
       {mounted && isLightboxOpen && createPortal(
-        <div className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center" style={{ backgroundColor: '#2F2D42' }}>
           {/* Close Button */}
           <button
             onClick={() => setIsLightboxOpen(false)}
