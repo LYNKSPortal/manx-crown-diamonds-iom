@@ -126,7 +126,49 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
         </Link>
       </div>
 
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      {/* Mobile Card View */}
+      <div className="lg:hidden space-y-4">
+        {filteredProducts.map(product => (
+          <div key={product.id} className="bg-white rounded-xl shadow-lg p-4">
+            <div className="flex gap-4">
+              <img
+                src={product.image_url || '/images/image-coming-soon.jpg'}
+                alt={product.name}
+                className="w-20 h-20 object-cover rounded-lg flex-shrink-0"
+              />
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-gray-900 mb-1 truncate">{product.name}</h3>
+                <p className="text-sm text-gray-600 mb-2">£{Number(product.price).toLocaleString()}</p>
+                <div className="flex gap-2">
+                  <Link
+                    href={`/admin/products/edit/${product.id}`}
+                    className="flex items-center gap-1 px-3 py-1.5 bg-dark-purple text-white rounded-lg text-sm font-medium hover:bg-opacity-90 transition-colors"
+                  >
+                    <Edit className="w-4 h-4" />
+                    Edit
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(product.id)}
+                    disabled={deleting === product.id}
+                    className="flex items-center gap-1 px-3 py-1.5 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-opacity-90 transition-colors disabled:opacity-50"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+        {filteredProducts.length === 0 && (
+          <div className="bg-white rounded-xl shadow-lg p-12 text-center">
+            <p className="text-gray-500">No products found</p>
+          </div>
+        )}
+      </div>
+
+      {/* Desktop Table View */}
+      <div className="hidden lg:block bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50 border-b border-gray-200">
