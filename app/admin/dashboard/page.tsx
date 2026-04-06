@@ -59,7 +59,7 @@ export default async function AdminDashboardPage() {
         </div>
 
         <main className="space-y-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           <Link
             href="/admin/products"
             className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all group"
@@ -74,23 +74,6 @@ export default async function AdminDashboardPage() {
             </div>
             <p className="text-gray-600">
               Manage your product catalog, add new items, edit details, and upload images.
-            </p>
-          </Link>
-
-          <Link
-            href="/admin/images"
-            className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all group"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-dark-purple rounded-full p-4 group-hover:scale-110 transition-transform">
-                <Upload className="w-8 h-8 text-antique-gold" />
-              </div>
-              <h2 className="text-2xl font-serif font-bold text-dark-purple">
-                Images
-              </h2>
-            </div>
-            <p className="text-gray-600">
-              Upload and manage product images using Cloudinary integration.
             </p>
           </Link>
 

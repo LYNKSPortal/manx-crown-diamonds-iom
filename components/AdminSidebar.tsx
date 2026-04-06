@@ -10,7 +10,6 @@ export default function AdminSidebar() {
   const navigation = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
     { name: 'Products', href: '/admin/products', icon: Package },
-    { name: 'Images', href: '/admin/images', icon: Upload },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];
 
