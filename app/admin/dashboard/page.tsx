@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
 import Link from 'next/link';
-import { Package, LogOut, Upload, Settings } from 'lucide-react';
+import { Package, Upload, Settings, TrendingUp, ShoppingBag, Eye } from 'lucide-react';
+import AdminLayout from '@/components/AdminLayout';
 
 export default async function AdminDashboardPage() {
   const session = await getSession();
@@ -11,29 +12,53 @@ export default async function AdminDashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-dark-purple text-white py-6 px-6 shadow-lg">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-serif font-bold">Admin Dashboard</h1>
-            <p className="text-sm text-gray-300 mt-1">Manx Crown Diamonds</p>
+    <AdminLayout>
+      <div className="p-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-serif font-bold text-dark-purple">Dashboard</h1>
+          <p className="text-gray-600 mt-1">Welcome back, {session.email}</p>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-dark-purple">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600 font-medium">Total Products</p>
+                <p className="text-3xl font-bold text-dark-purple mt-2">24</p>
+              </div>
+              <div className="bg-dark-purple bg-opacity-10 rounded-full p-4">
+                <ShoppingBag className="w-8 h-8 text-dark-purple" />
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm">{session.email}</span>
-            <form action="/api/admin/logout" method="POST">
-              <button
-                type="submit"
-                className="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 px-4 py-2 rounded-lg transition-colors"
-              >
-                <LogOut className="w-4 h-4" />
-                Logout
-              </button>
-            </form>
+
+          <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-antique-gold">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600 font-medium">Featured Items</p>
+                <p className="text-3xl font-bold text-dark-purple mt-2">8</p>
+              </div>
+              <div className="bg-antique-gold bg-opacity-10 rounded-full p-4">
+                <TrendingUp className="w-8 h-8 text-antique-gold" />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600 font-medium">In Stock</p>
+                <p className="text-3xl font-bold text-dark-purple mt-2">21</p>
+              </div>
+              <div className="bg-green-500 bg-opacity-10 rounded-full p-4">
+                <Package className="w-8 h-8 text-green-500" />
+              </div>
+            </div>
           </div>
         </div>
-      </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-12">
+        <main className="space-y-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Link
             href="/admin/products"
@@ -110,7 +135,8 @@ export default async function AdminDashboardPage() {
             </Link>
           </div>
         </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </AdminLayout>
   );
 }
