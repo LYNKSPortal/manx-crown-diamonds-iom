@@ -1,10 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Save } from 'lucide-react';
-import ImageUpload from '@/components/ImageUpload';
+import MultiImageUpload from '@/components/MultiImageUpload';
+
+interface ImageData {
+  id: string;
+  url: string;
+  publicId?: string;
+  order: number;
+}
 
 interface EditProductClientProps {
   product: any;
@@ -14,7 +21,7 @@ export default function EditProductClient({ product }: EditProductClientProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [imageUrl, setImageUrl] = useState(product.image_url || '');
+  const [images, setImages] = useState<ImageData[]>([]);
 
   const [formData, setFormData] = useState({
     name: product.name || '',
@@ -30,6 +37,22 @@ export default function EditProductClient({ product }: EditProductClientProps) {
     dimensions: product.dimensions || '',
   });
 
+  // Fetch product images on mount
+  useEffect(() => {
+    async function fetchImages() {
+      try {
+        const response = await fetch(`/api/admin/products/${product.id}/images`);
+        if (response.ok) {
+          const data = await response.json();
+          setImages(data.images || []);
+        }
+      } catch (err) {
+        console.error('Failed to fetch images:', err);
+      }
+    }
+    fetchImages();
+  }, [product.id]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     setFormData(prev => ({
@@ -44,12 +67,13 @@ export default function EditProductClient({ product }: EditProductClientProps) {
     setError('');
 
     try {
+      // Update product details
       const response = await fetch(`/api/admin/products/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          image_url: imageUrl,
+          image_url: images.length > 0 ? images[0].url : null,
         }),
       });
 
@@ -57,6 +81,17 @@ export default function EditProductClient({ product }: EditProductClientProps) {
 
       if (!response.ok) {
         throw new Error(data.error || 'Failed to update product');
+      }
+
+      // Update product images
+      const imagesResponse = await fetch(`/api/admin/products/${product.id}/images`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ images }),
+      });
+
+      if (!imagesResponse.ok) {
+        throw new Error('Failed to update images');
       }
 
       router.push('/admin/products');
@@ -87,19 +122,16 @@ export default function EditProductClient({ product }: EditProductClientProps) {
         )}
 
         <div className="space-y-6">
-          {/* Product Image */}
+          {/* Product Images */}
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Product Image
+              Product Images
             </label>
-            <ImageUpload
-              onUploadComplete={(url) => setImageUrl(url)}
+            <MultiImageUpload
+              images={images}
+              onImagesChange={setImages}
+              maxImages={10}
             />
-            {imageUrl && (
-              <div className="mt-4">
-                <img src={imageUrl} alt="Product" className="w-32 h-32 object-cover rounded-lg" />
-              </div>
-            )}
           </div>
 
           {/* Basic Information */}
