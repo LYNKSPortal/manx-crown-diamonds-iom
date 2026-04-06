@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { getSession } from '@/lib/auth';
+import { sql } from '@/lib/db';
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,12 +31,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get current admin credentials
-    const adminEmail = process.env.ADMIN_EMAIL || 'support@lynksportal.com';
-    const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH || '$2b$10$Pe5QDoJPcjJ90PJTEtWjzeJkNjzZDYRcc1pJ7h3AuU1xqwTd2kY82';
+    // Get user from database
+    const users = await sql`
+      SELECT id, email, password
+      FROM users
+      WHERE email = ${session.email}
+      LIMIT 1
+    `;
+
+    if (users.length === 0) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      );
+    }
+
+    const user = users[0];
 
     // Verify current password
-    const isValidPassword = await bcrypt.compare(currentPassword, adminPasswordHash);
+    const isValidPassword = await bcrypt.compare(currentPassword, user.password);
     
     if (!isValidPassword) {
       return NextResponse.json(
@@ -47,18 +61,16 @@ export async function POST(request: NextRequest) {
     // Generate new password hash
     const newPasswordHash = await bcrypt.hash(newPassword, 10);
 
-    // Log the new hash for the user to update in their .env.local
-    console.log('\n===========================================');
-    console.log('PASSWORD RESET SUCCESSFUL');
-    console.log('===========================================');
-    console.log('Update your .env.local file with:');
-    console.log(`ADMIN_PASSWORD_HASH="${newPasswordHash}"`);
-    console.log('===========================================\n');
+    // Update password in database
+    await sql`
+      UPDATE users
+      SET password = ${newPasswordHash}, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ${user.id}
+    `;
 
     return NextResponse.json({
       success: true,
-      message: 'Password updated successfully. Check server console for new hash to update .env.local',
-      newHash: newPasswordHash,
+      message: 'Password updated successfully',
     });
   } catch (error) {
     console.error('Password reset error:', error);
