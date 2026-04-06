@@ -33,21 +33,19 @@ export default function MobileMenu({ currentPage }: MobileMenuProps) {
 
       {/* Full Page Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-dark-purple text-white z-[100] transform transition-all duration-300 ease-in-out md:hidden ${
+        className={`fixed inset-0 w-full h-full bg-dark-purple text-white z-[100] transform transition-all duration-300 ease-in-out md:hidden ${
           isOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
         }`}
       >
-        <div className="flex justify-end p-6">
-          <button
-            onClick={toggleMenu}
-            className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-            aria-label="Close menu"
-          >
-            <X className="w-8 h-8" />
-          </button>
-        </div>
+        <button
+          onClick={toggleMenu}
+          className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-lg transition-colors z-10"
+          aria-label="Close menu"
+        >
+          <X className="w-8 h-8" />
+        </button>
 
-        <nav className="flex flex-col items-center justify-center h-[calc(100vh-120px)] space-y-8 px-6">
+        <nav className="flex flex-col items-center justify-center w-full h-full space-y-8 px-6">
           {navItems.map((item) => {
             const isActive = currentPage === item.href;
             const isContactButton = item.label === 'Contact Us';
