@@ -160,48 +160,27 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
                     <span className="font-semibold text-gray-900">£{Number(product.price).toLocaleString()}</span>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex flex-col gap-2">
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name={`status-${product.id}`}
-                          checked={!product.is_unique_item && product.in_stock}
-                          onChange={() => handleStatusChange(product.id, 'in_stock')}
-                          className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-2"
-                        />
-                        <span className="text-sm text-gray-700">In Stock</span>
-                      </label>
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name={`status-${product.id}`}
-                          checked={!product.is_unique_item && !product.in_stock}
-                          onChange={() => handleStatusChange(product.id, 'out_of_stock')}
-                          className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-2"
-                        />
-                        <span className="text-sm text-gray-700">Out of Stock</span>
-                      </label>
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name={`status-${product.id}`}
-                          checked={product.is_unique_item && product.in_stock}
-                          onChange={() => handleStatusChange(product.id, 'available')}
-                          className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-2"
-                        />
-                        <span className="text-sm text-gray-700">Available</span>
-                      </label>
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name={`status-${product.id}`}
-                          checked={product.is_unique_item && !product.in_stock}
-                          onChange={() => handleStatusChange(product.id, 'sold')}
-                          className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-2"
-                        />
-                        <span className="text-sm text-gray-700">Sold</span>
-                      </label>
-                    </div>
+                    {product.is_unique_item ? (
+                      product.in_stock ? (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 w-fit">
+                          Available
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800 w-fit">
+                          Sold
+                        </span>
+                      )
+                    ) : (
+                      product.in_stock ? (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 w-fit">
+                          In Stock
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800 w-fit">
+                          Out of Stock
+                        </span>
+                      )
+                    )}
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex gap-2">

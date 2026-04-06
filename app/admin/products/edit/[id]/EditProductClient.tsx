@@ -196,30 +196,52 @@ export default function EditProductClient({ product }: EditProductClientProps) {
                 </div>
               </div>
 
-              <div className="flex gap-6">
-                <label className="flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="is_unique_item"
-                    checked={formData.is_unique_item}
-                    onChange={handleChange}
-                    className="mr-3 accent-dark-purple w-5 h-5"
-                  />
-                  <span className="text-gray-700">Unique Item (one-of-a-kind)</span>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  Product Status
                 </label>
-
-                <label className="flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="in_stock"
-                    checked={formData.in_stock}
-                    onChange={handleChange}
-                    className="mr-3 accent-dark-purple w-5 h-5"
-                  />
-                  <span className="text-gray-700">
-                    {formData.is_unique_item ? 'Available' : 'In Stock'}
-                  </span>
-                </label>
+                <div className="flex flex-col gap-3">
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="status"
+                      checked={!formData.is_unique_item && formData.in_stock}
+                      onChange={() => setFormData({ ...formData, is_unique_item: false, in_stock: true })}
+                      className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-3"
+                    />
+                    <span className="text-gray-700">In Stock (regular inventory item)</span>
+                  </label>
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="status"
+                      checked={!formData.is_unique_item && !formData.in_stock}
+                      onChange={() => setFormData({ ...formData, is_unique_item: false, in_stock: false })}
+                      className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-3"
+                    />
+                    <span className="text-gray-700">Out of Stock (regular inventory item)</span>
+                  </label>
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="status"
+                      checked={formData.is_unique_item && formData.in_stock}
+                      onChange={() => setFormData({ ...formData, is_unique_item: true, in_stock: true })}
+                      className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-3"
+                    />
+                    <span className="text-gray-700">Available (unique/one-of-a-kind item)</span>
+                  </label>
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="status"
+                      checked={formData.is_unique_item && !formData.in_stock}
+                      onChange={() => setFormData({ ...formData, is_unique_item: true, in_stock: false })}
+                      className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-3"
+                    />
+                    <span className="text-gray-700">Sold (unique/one-of-a-kind item)</span>
+                  </label>
+                </div>
               </div>
 
               <div>
