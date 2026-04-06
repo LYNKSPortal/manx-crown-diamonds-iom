@@ -4,7 +4,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Package, Upload, Settings, LayoutDashboard, LogOut } from 'lucide-react';
 
-export default function AdminSidebar() {
+interface AdminSidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
   const pathname = usePathname();
 
   const navigation = [
@@ -16,7 +21,12 @@ export default function AdminSidebar() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
 
   return (
-    <div className="flex h-screen w-64 flex-col bg-dark-purple">
+    <div className={`
+      flex h-screen w-64 flex-col bg-dark-purple
+      fixed lg:relative z-40
+      transition-transform duration-300 ease-in-out
+      ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+    `}>
       {/* Logo */}
       <div className="flex h-20 items-center justify-center border-b border-white border-opacity-10 px-6">
         <img 
@@ -36,6 +46,7 @@ export default function AdminSidebar() {
             <Link
               key={item.name}
               href={item.href}
+              onClick={onClose}
               className={`
                 flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all
                 ${active 

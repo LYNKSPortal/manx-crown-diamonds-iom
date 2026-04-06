@@ -13,10 +13,10 @@ export default async function AdminDashboardPage() {
 
   return (
     <AdminLayout>
-      <div className="p-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-serif font-bold text-dark-purple">Dashboard</h1>
-          <p className="text-gray-600 mt-1">Welcome back, {session.email}</p>
+      <div className="p-4 md:p-6 lg:p-8">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-3xl font-serif font-bold text-dark-purple">Dashboard</h1>
+          <p className="text-sm md:text-base text-gray-600 mt-1">Welcome back, {session.email}</p>
         </div>
 
         {/* Stats Cards */}
