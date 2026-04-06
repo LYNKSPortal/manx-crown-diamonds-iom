@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getSession } from '@/lib/auth';
 import { sql } from '@/lib/db';
 
@@ -71,6 +72,10 @@ export async function POST(request: NextRequest) {
       )
       RETURNING *
     `;
+
+    // Revalidate all pages that display products
+    revalidatePath('/shop');
+    revalidatePath('/');
 
     return NextResponse.json({
       success: true,
