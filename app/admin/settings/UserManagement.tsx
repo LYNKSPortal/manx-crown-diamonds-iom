@@ -142,16 +142,16 @@ export default function UserManagement() {
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
           <div className="bg-dark-purple rounded-full p-3">
             <Users className="w-6 h-6 text-antique-gold" />
           </div>
-          <h2 className="text-2xl font-serif font-bold text-dark-purple">User Management</h2>
+          <h2 className="text-xl md:text-2xl font-serif font-bold text-dark-purple">User Management</h2>
         </div>
         <button
           onClick={() => setShowCreateForm(!showCreateForm)}
-          className="px-4 py-2 bg-dark-purple text-white rounded-lg font-semibold hover:bg-opacity-90 transition-colors"
+          className="px-4 py-2 bg-dark-purple text-white rounded-lg font-semibold hover:bg-opacity-90 transition-colors whitespace-nowrap"
         >
           {showCreateForm ? 'Cancel' : '+ Add New User'}
         </button>
@@ -163,10 +163,10 @@ export default function UserManagement() {
 
       {/* Create User Form */}
       {showCreateForm && (
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 md:p-6 mb-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Create New User</h3>
           <form onSubmit={handleCreateUser} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   First Name
@@ -252,7 +252,77 @@ export default function UserManagement() {
         </div>
       )}
 
-      <div className="overflow-x-auto">
+      {/* Mobile Card View */}
+      <div className="lg:hidden space-y-4">
+        {users.map(user => (
+          <div key={user.id} className="border border-gray-200 rounded-lg p-4">
+            <div className="mb-3">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-semibold text-gray-900">
+                  {user.first_name && user.last_name 
+                    ? `${user.first_name} ${user.last_name}`
+                    : user.first_name || user.last_name || '-'
+                  }
+                </h3>
+                <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${
+                  user.role === 'master_admin' 
+                    ? 'bg-purple-100 text-purple-800' 
+                    : 'bg-blue-100 text-blue-800'
+                }`}>
+                  {user.role === 'master_admin' ? 'Master' : 'Admin'}
+                </span>
+              </div>
+              <p className="text-sm text-gray-600">{user.email}</p>
+            </div>
+            
+            {selectedUserId === user.id ? (
+              <div className="space-y-2">
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="New password (min 6 chars)"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-dark-purple focus:border-transparent"
+                />
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleResetPassword(user.id)}
+                    disabled={resettingPassword === user.id}
+                    className="flex-1 px-4 py-2 bg-dark-purple text-white rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-colors disabled:opacity-50"
+                  >
+                    {resettingPassword === user.id ? 'Resetting...' : 'Reset'}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSelectedUserId(null);
+                      setNewPassword('');
+                    }}
+                    className="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-300 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => setSelectedUserId(user.id)}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-dark-purple text-white rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-colors"
+              >
+                <Key className="w-4 h-4" />
+                Reset Password
+              </button>
+            )}
+          </div>
+        ))}
+        {users.length === 0 && (
+          <div className="border border-gray-200 rounded-lg p-12 text-center">
+            <p className="text-gray-500">No users found</p>
+          </div>
+        )}
+      </div>
+
+      {/* Desktop Table View */}
+      <div className="hidden lg:block overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
@@ -335,13 +405,13 @@ export default function UserManagement() {
             ))}
           </tbody>
         </table>
-      </div>
 
-      {users.length === 0 && (
-        <div className="text-center py-8 text-gray-500">
-          No users found
-        </div>
-      )}
+        {users.length === 0 && (
+          <div className="text-center py-8 text-gray-500">
+            No users found
+          </div>
+        )}
+      </div>
     </div>
   );
 }
