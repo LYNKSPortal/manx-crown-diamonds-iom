@@ -199,13 +199,13 @@ export default function ShopPage() {
                 </button>
               </div>
             ) : (
-              <FadeIn delay={0.3}>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                  {filteredProducts.map(product => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
-              </FadeIn>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {filteredProducts.map((product, index) => (
+                  <FadeIn key={product.id} delay={0.3 + index * 0.1}>
+                    <ProductCard product={product} />
+                  </FadeIn>
+                ))}
+              </div>
             )}
           </main>
         </div>
