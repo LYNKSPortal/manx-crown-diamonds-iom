@@ -19,6 +19,15 @@ export default function UserManagement() {
   const [resettingPassword, setResettingPassword] = useState<number | null>(null);
   const [newPassword, setNewPassword] = useState('');
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [newUser, setNewUser] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    role: 'admin',
+  });
 
   useEffect(() => {
     fetchUsers();
@@ -38,6 +47,51 @@ export default function UserManagement() {
       console.error('Error fetching users:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCreateUser = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!newUser.email || !newUser.password) {
+      alert('Email and password are required');
+      return;
+    }
+
+    if (newUser.password.length < 6) {
+      alert('Password must be at least 6 characters');
+      return;
+    }
+
+    setCreating(true);
+    try {
+      const response = await fetch('/api/admin/users/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('User created successfully!');
+        setShowCreateForm(false);
+        setNewUser({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          role: 'admin',
+        });
+        fetchUsers(); // Refresh the user list
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      alert('Failed to create user');
+      console.error('Error creating user:', error);
+    } finally {
+      setCreating(false);
     }
   };
 
@@ -88,16 +142,115 @@ export default function UserManagement() {
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="bg-dark-purple rounded-full p-3">
-          <Users className="w-6 h-6 text-antique-gold" />
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
+          <div className="bg-dark-purple rounded-full p-3">
+            <Users className="w-6 h-6 text-antique-gold" />
+          </div>
+          <h2 className="text-2xl font-serif font-bold text-dark-purple">User Management</h2>
         </div>
-        <h2 className="text-2xl font-serif font-bold text-dark-purple">User Management</h2>
+        <button
+          onClick={() => setShowCreateForm(!showCreateForm)}
+          className="px-4 py-2 bg-dark-purple text-white rounded-lg font-semibold hover:bg-opacity-90 transition-colors"
+        >
+          {showCreateForm ? 'Cancel' : '+ Add New User'}
+        </button>
       </div>
       
       <p className="text-gray-600 mb-6">
         View and manage all admin users. Reset passwords for other users as needed.
       </p>
+
+      {/* Create User Form */}
+      {showCreateForm && (
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Create New User</h3>
+          <form onSubmit={handleCreateUser} className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  value={newUser.firstName}
+                  onChange={(e) => setNewUser({ ...newUser, firstName: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dark-purple focus:border-transparent"
+                  placeholder="John"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  value={newUser.lastName}
+                  onChange={(e) => setNewUser({ ...newUser, lastName: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dark-purple focus:border-transparent"
+                  placeholder="Doe"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Email *
+              </label>
+              <input
+                type="email"
+                value={newUser.email}
+                onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dark-purple focus:border-transparent"
+                placeholder="user@example.com"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Password * (min 6 characters)
+              </label>
+              <input
+                type="password"
+                value={newUser.password}
+                onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                required
+                minLength={6}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dark-purple focus:border-transparent"
+                placeholder="••••••••"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Role
+              </label>
+              <select
+                value={newUser.role}
+                onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dark-purple focus:border-transparent"
+              >
+                <option value="admin">Admin</option>
+                <option value="master_admin">Master Admin</option>
+              </select>
+            </div>
+            <div className="flex gap-3">
+              <button
+                type="submit"
+                disabled={creating}
+                className="px-6 py-2 bg-dark-purple text-white rounded-lg font-semibold hover:bg-opacity-90 transition-colors disabled:opacity-50"
+              >
+                {creating ? 'Creating...' : 'Create User'}
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowCreateForm(false)}
+                className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
 
       <div className="overflow-x-auto">
         <table className="w-full">
