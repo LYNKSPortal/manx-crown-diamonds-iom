@@ -8,6 +8,13 @@ const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfa
 export const metadata: Metadata = {
   title: 'Manx Crown Diamonds | Bespoke Jewellery Isle of Man',
   description: 'Specialising in IGI and GIA Certified diamonds to create bespoke jewellery pieces. Based in the Isle of Man, offering engagement rings, custom designs, and meaningful gifts.',
+  openGraph: {
+    images: ['/favicon/web-app-manifest-512x512.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/favicon/web-app-manifest-512x512.png'],
+  },
 }
 
 export default function RootLayout({
