@@ -12,6 +12,7 @@ interface Product {
   category: string;
   in_stock: boolean;
   featured: boolean;
+  is_unique_item?: boolean;
   image_url?: string;
 }
 
@@ -27,6 +28,60 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleToggleUniqueItem = async (id: string, currentValue: boolean) => {
+    try {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+
+      const response = await fetch(`/api/admin/products/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...product,
+          is_unique_item: !currentValue,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update product');
+      }
+
+      setProducts(products.map(p => 
+        p.id === id ? { ...p, is_unique_item: !currentValue } : p
+      ));
+    } catch (error) {
+      alert('Failed to update product');
+      console.error(error);
+    }
+  };
+
+  const handleToggleInStock = async (id: string, currentValue: boolean) => {
+    try {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+
+      const response = await fetch(`/api/admin/products/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...product,
+          in_stock: !currentValue,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update product');
+      }
+
+      setProducts(products.map(p => 
+        p.id === id ? { ...p, in_stock: !currentValue } : p
+      ));
+    } catch (error) {
+      alert('Failed to update product');
+      console.error(error);
+    }
+  };
 
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this product?')) {
@@ -82,6 +137,7 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Product</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Category</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Price</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Unique Item</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Status</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Actions</th>
               </tr>
@@ -109,15 +165,32 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
                     <span className="font-semibold text-gray-900">£{Number(product.price).toLocaleString()}</span>
                   </td>
                   <td className="px-6 py-4">
-                    {product.in_stock ? (
-                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 w-fit">
-                        In Stock
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800 w-fit">
-                        Out of Stock
-                      </span>
-                    )}
+                    <label className="flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={product.is_unique_item || false}
+                        onChange={() => handleToggleUniqueItem(product.id, product.is_unique_item || false)}
+                        className="w-5 h-5 text-dark-purple rounded focus:ring-dark-purple cursor-pointer"
+                      />
+                    </label>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      <label className="flex items-center cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={product.in_stock}
+                          onChange={() => handleToggleInStock(product.id, product.in_stock)}
+                          className="w-5 h-5 text-dark-purple rounded focus:ring-dark-purple cursor-pointer mr-2"
+                        />
+                        <span className="text-sm font-semibold text-gray-700">
+                          {product.is_unique_item ? 
+                            (product.in_stock ? 'Available' : 'Sold') : 
+                            (product.in_stock ? 'In Stock' : 'Out of Stock')
+                          }
+                        </span>
+                      </label>
+                    </div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex gap-2">
