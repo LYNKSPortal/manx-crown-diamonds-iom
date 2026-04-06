@@ -74,8 +74,10 @@ export default function UserManagement() {
     return (
       <div className="bg-white rounded-xl shadow-lg p-8">
         <div className="flex items-center gap-3 mb-6">
-          <Users className="w-6 h-6 text-dark-purple" />
-          <h2 className="text-2xl font-bold text-gray-900">User Management</h2>
+          <div className="bg-dark-purple rounded-full p-3">
+            <Users className="w-6 h-6 text-antique-gold" />
+          </div>
+          <h2 className="text-2xl font-serif font-bold text-dark-purple">User Management</h2>
         </div>
         <p className="text-gray-600">Loading users...</p>
       </div>
@@ -85,12 +87,14 @@ export default function UserManagement() {
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
       <div className="flex items-center gap-3 mb-6">
-        <Users className="w-6 h-6 text-dark-purple" />
-        <h2 className="text-2xl font-bold text-gray-900">User Management</h2>
+        <div className="bg-dark-purple rounded-full p-3">
+          <Users className="w-6 h-6 text-antique-gold" />
+        </div>
+        <h2 className="text-2xl font-serif font-bold text-dark-purple">User Management</h2>
       </div>
       
       <p className="text-gray-600 mb-6">
-        Manage admin users and reset their passwords
+        View and manage all admin users. Reset passwords for other users as needed.
       </p>
 
       <div className="overflow-x-auto">
