@@ -1,13 +1,13 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Gem, CheckCircle, XCircle, Mail, Phone } from 'lucide-react';
-import { getProductById } from '@/lib/products';
+import { getProductById } from '@/lib/products-db';
 import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
 import FadeIn from '@/components/FadeIn';
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const product = getProductById(params.id);
+export default async function ProductDetailPage({ params }: { params: { id: string } }) {
+  const product = await getProductById(params.id);
 
   if (!product) {
     notFound();

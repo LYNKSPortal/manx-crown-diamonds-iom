@@ -2,9 +2,10 @@ import { Gem, Sparkles, Heart, Gift, Search, Palette, Mail, Phone } from 'lucide
 import Footer from '@/components/Footer'
 import MobileMenu from '@/components/MobileMenu'
 import FadeIn from '@/components/FadeIn'
-import { getProducts } from '@/lib/products'
+import { getProducts } from '@/lib/products-db';
 
-export default function Home() {
+export default async function Home() {
+  const allProducts = await getProducts();
   return (
     <main className="min-h-screen w-full">
       {/* Deployment Test Marker - v2.0 with FadeIn */}
@@ -108,7 +109,7 @@ export default function Home() {
           </FadeIn>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {getProducts().slice(-4).reverse().map((product, index) => (
+            {allProducts.slice(-4).reverse().map((product, index) => (
               <FadeIn key={product.id} delay={0.2 + index * 0.1} className="block">
                 <a href={`/shop/${product.id}`} className="block group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative aspect-square overflow-hidden">

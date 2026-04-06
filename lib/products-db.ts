@@ -8,6 +8,7 @@ export async function getProducts(): Promise<Product[]> {
         id, name, description, price, category, 
         in_stock as "inStock", featured,
         material, gemstone, certification, weight, dimensions,
+        image_url as "imageUrl",
         created_at as "createdAt", updated_at as "updatedAt"
       FROM products
       ORDER BY created_at DESC
@@ -22,6 +23,7 @@ export async function getProducts(): Promise<Product[]> {
       inStock: row.inStock,
       featured: row.featured,
       images: ['/products/placeholder.jpg'],
+      imageUrl: row.imageUrl || undefined,
       specifications: {
         material: row.material || undefined,
         gemstone: row.gemstone || undefined,
@@ -45,6 +47,7 @@ export async function getProductById(id: string): Promise<Product | null> {
         id, name, description, price, category, 
         in_stock as "inStock", featured,
         material, gemstone, certification, weight, dimensions,
+        image_url as "imageUrl",
         created_at as "createdAt", updated_at as "updatedAt"
       FROM products
       WHERE id = ${id}
@@ -65,6 +68,7 @@ export async function getProductById(id: string): Promise<Product | null> {
       inStock: row.inStock,
       featured: row.featured,
       images: ['/products/placeholder.jpg'],
+      imageUrl: row.imageUrl || undefined,
       specifications: {
         material: row.material || undefined,
         gemstone: row.gemstone || undefined,
@@ -88,6 +92,7 @@ export async function getProductsByCategory(category: string): Promise<Product[]
         id, name, description, price, category, 
         in_stock as "inStock", featured,
         material, gemstone, certification, weight, dimensions,
+        image_url as "imageUrl",
         created_at as "createdAt", updated_at as "updatedAt"
       FROM products
       WHERE category = ${category}
@@ -103,6 +108,7 @@ export async function getProductsByCategory(category: string): Promise<Product[]
       inStock: row.inStock,
       featured: row.featured,
       images: ['/products/placeholder.jpg'],
+      imageUrl: row.imageUrl || undefined,
       specifications: {
         material: row.material || undefined,
         gemstone: row.gemstone || undefined,
@@ -126,6 +132,7 @@ export async function getFeaturedProducts(): Promise<Product[]> {
         id, name, description, price, category, 
         in_stock as "inStock", featured,
         material, gemstone, certification, weight, dimensions,
+        image_url as "imageUrl",
         created_at as "createdAt", updated_at as "updatedAt"
       FROM products
       WHERE featured = true
@@ -141,6 +148,7 @@ export async function getFeaturedProducts(): Promise<Product[]> {
       inStock: row.inStock,
       featured: row.featured,
       images: ['/products/placeholder.jpg'],
+      imageUrl: row.imageUrl || undefined,
       specifications: {
         material: row.material || undefined,
         gemstone: row.gemstone || undefined,
