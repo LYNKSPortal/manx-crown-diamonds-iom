@@ -30,12 +30,15 @@ export default function PrivacyPolicyPage() {
       </header>
 
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold text-diamond-blue mb-4">
-          Privacy Policy
-        </h1>
-        <p className="text-gray-600 mb-8">Last updated: {new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+        <FadeIn>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-diamond-blue mb-4">
+            Privacy Policy
+          </h1>
+          <p className="text-gray-600 mb-8">Last updated: {new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+        </FadeIn>
 
-        <div className="bg-white rounded-xl shadow-lg p-8 space-y-8">
+        <FadeIn delay={0.1}>
+          <div className="bg-white rounded-xl shadow-lg p-8 space-y-8">
           <section>
             <h2 className="text-2xl font-serif font-bold text-diamond-blue mb-4">1. Introduction</h2>
             <p className="text-gray-700 leading-relaxed">
@@ -154,11 +157,14 @@ export default function PrivacyPolicyPage() {
               <p className="text-gray-700 mt-2"><strong>Location:</strong> Isle of Man</p>
             </div>
           </section>
-        </div>
+          </div>
+        </FadeIn>
 
-        <div className="mt-8 text-center">
-          <a href="/" className="text-diamond-blue hover:underline">← Back to Home</a>
-        </div>
+        <FadeIn delay={0.2}>
+          <div className="mt-8 text-center">
+            <a href="/" className="text-diamond-blue hover:underline">← Back to Home</a>
+          </div>
+        </FadeIn>
       </div>
 
       <Footer />
