@@ -7,6 +7,7 @@ import { getProducts } from '@/lib/products'
 export default function Home() {
   return (
     <main className="min-h-screen w-full">
+      {/* Deployment Test Marker - v2.0 with FadeIn */}
       <header className="bg-dark-purple text-white py-6 sticky top-0 z-50 shadow-lg w-full">
         <div className="w-full px-6 flex justify-between items-center">
           <FadeIn delay={0} className="inline-flex">
