@@ -7,6 +7,7 @@ export interface Product {
   category: ProductCategory;
   price: number;
   images: string[];
+  imageUrl?: string;
   featured: boolean;
   inStock: boolean;
   specifications: {

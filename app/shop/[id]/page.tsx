@@ -49,8 +49,12 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
         <div className="grid md:grid-cols-2 gap-12">
           <FadeIn delay={0.1}>
-            <div className="bg-gradient-to-br from-dark-purple to-gray-800 rounded-2xl aspect-square flex items-center justify-center shadow-2xl">
-            <Gem className="w-48 h-48 text-antique-gold" />
+            <div className="rounded-2xl aspect-square overflow-hidden shadow-2xl">
+              <img
+                src={product.imageUrl || '/images/image-coming-soon.jpg'}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
             </div>
           </FadeIn>
 

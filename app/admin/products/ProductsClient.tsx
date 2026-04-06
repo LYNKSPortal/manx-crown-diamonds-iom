@@ -91,13 +91,11 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
                 <tr key={product.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-4">
-                      {product.image_url && (
-                        <img
-                          src={product.image_url}
-                          alt={product.name}
-                          className="w-12 h-12 object-cover rounded-lg"
-                        />
-                      )}
+                      <img
+                        src={product.image_url || '/images/image-coming-soon.jpg'}
+                        alt={product.name}
+                        className="w-12 h-12 object-cover rounded-lg"
+                      />
                       <div>
                         <div className="font-semibold text-gray-900">{product.name}</div>
                         <div className="text-sm text-gray-500 line-clamp-1">{product.description}</div>
