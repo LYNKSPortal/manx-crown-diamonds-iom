@@ -4,6 +4,8 @@ import MobileMenu from '@/components/MobileMenu'
 import FadeIn from '@/components/FadeIn'
 import { getProducts } from '@/lib/products-db';
 
+export const revalidate = 0; // Disable caching
+
 export default async function Home() {
   const allProducts = await getProducts();
   return (
