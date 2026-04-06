@@ -195,7 +195,7 @@ export default function EditProductClient({ product }: EditProductClientProps) {
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div>
                 <label className="flex items-center cursor-pointer">
                   <input
                     type="checkbox"
@@ -205,17 +205,6 @@ export default function EditProductClient({ product }: EditProductClientProps) {
                     className="mr-3 accent-dark-purple w-5 h-5"
                   />
                   <span className="text-gray-700">In Stock</span>
-                </label>
-
-                <label className="flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="featured"
-                    checked={formData.featured}
-                    onChange={handleChange}
-                    className="mr-3 accent-dark-purple w-5 h-5"
-                  />
-                  <span className="text-gray-700">Featured</span>
                 </label>
               </div>
 

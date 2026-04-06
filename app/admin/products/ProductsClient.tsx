@@ -109,22 +109,15 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
                     <span className="font-semibold text-gray-900">£{Number(product.price).toLocaleString()}</span>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex flex-col gap-1">
-                      {product.in_stock ? (
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 w-fit">
-                          In Stock
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800 w-fit">
-                          Out of Stock
-                        </span>
-                      )}
-                      {product.featured && (
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800 w-fit">
-                          Featured
-                        </span>
-                      )}
-                    </div>
+                    {product.in_stock ? (
+                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 w-fit">
+                        In Stock
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800 w-fit">
+                        Out of Stock
+                      </span>
+                    )}
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex gap-2">

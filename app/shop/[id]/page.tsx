@@ -62,11 +62,6 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
           <FadeIn delay={0.2}>
             <div>
             <div className="mb-6">
-              {product.featured && (
-                <span className="inline-block bg-antique-gold text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  Featured
-                </span>
-              )}
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-purple mb-4">
                 {product.name}
               </h1>

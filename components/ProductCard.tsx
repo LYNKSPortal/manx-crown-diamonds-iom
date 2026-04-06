@@ -23,11 +23,6 @@ export default function ProductCard({ product }: ProductCardProps) {
               Out of Stock
             </div>
           )}
-          {product.featured && (
-            <div className="absolute top-4 left-4 bg-antique-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
-              Featured
-            </div>
-          )}
         </div>
         <div className="p-6">
           <h3 className="text-xl font-serif font-bold mb-2 text-dark-purple group-hover:text-opacity-80 transition-colors">

@@ -169,17 +169,6 @@ export default function ProductForm({ product, isEdit = false }: ProductFormProp
               />
               <span className="text-sm font-semibold text-gray-700">In Stock</span>
             </label>
-
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                name="featured"
-                checked={formData.featured}
-                onChange={handleChange}
-                className="w-5 h-5 text-dark-purple rounded focus:ring-dark-purple"
-              />
-              <span className="text-sm font-semibold text-gray-700">Featured</span>
-            </label>
           </div>
         </div>
 
