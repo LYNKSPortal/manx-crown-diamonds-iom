@@ -69,7 +69,7 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
                 <span className="text-3xl font-bold text-dark-purple">
                   £{product.price.toLocaleString()}
                 </span>
-                {(product as any).is_under_offer ? (
+                {product.is_under_offer ? (
                   <span className="flex items-center gap-2 text-yellow-600 font-semibold">
                     <CheckCircle className="w-5 h-5" />
                     Under Offer
@@ -77,12 +77,12 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
                 ) : product.inStock ? (
                   <span className="flex items-center gap-2 text-green-600 font-semibold">
                     <CheckCircle className="w-5 h-5" />
-                    {(product as any).is_unique_item ? 'Available' : 'In Stock'}
+                    {product.is_unique_item ? 'Available' : 'In Stock'}
                   </span>
                 ) : (
                   <span className="flex items-center gap-2 text-red-600 font-semibold">
                     <XCircle className="w-5 h-5" />
-                    {(product as any).is_unique_item ? 'Sold' : 'Out of Stock'}
+                    {product.is_unique_item ? 'Sold' : 'Out of Stock'}
                   </span>
                 )}
               </div>

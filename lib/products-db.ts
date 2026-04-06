@@ -6,7 +6,7 @@ export async function getProducts(): Promise<Product[]> {
     const rows = await sql`
       SELECT 
         id, name, description, price, category, 
-        in_stock as "inStock", featured,
+        in_stock as "inStock", featured, is_unique_item as "isUniqueItem", is_under_offer as "isUnderOffer",
         material, gemstone, certification, weight, dimensions,
         image_url as "imageUrl",
         created_at as "createdAt", updated_at as "updatedAt"
@@ -24,6 +24,8 @@ export async function getProducts(): Promise<Product[]> {
       featured: row.featured,
       images: ['/products/placeholder.jpg'],
       imageUrl: row.imageUrl || undefined,
+      is_unique_item: row.isUniqueItem || false,
+      is_under_offer: row.isUnderOffer || false,
       specifications: {
         material: row.material || undefined,
         gemstone: row.gemstone || undefined,
@@ -45,7 +47,7 @@ export async function getProductById(id: string): Promise<Product | null> {
     const rows = await sql`
       SELECT 
         id, name, description, price, category, 
-        in_stock as "inStock", featured,
+        in_stock as "inStock", featured, is_unique_item as "isUniqueItem", is_under_offer as "isUnderOffer",
         material, gemstone, certification, weight, dimensions,
         image_url as "imageUrl",
         created_at as "createdAt", updated_at as "updatedAt"
@@ -79,6 +81,8 @@ export async function getProductById(id: string): Promise<Product | null> {
       featured: row.featured,
       images: productImages.length > 0 ? productImages : ['/products/placeholder.jpg'],
       imageUrl: productImages.length > 0 ? productImages[0] : (row.imageUrl || undefined),
+      is_unique_item: row.isUniqueItem || false,
+      is_under_offer: row.isUnderOffer || false,
       specifications: {
         material: row.material || undefined,
         gemstone: row.gemstone || undefined,
