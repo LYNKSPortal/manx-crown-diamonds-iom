@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Upload, X, GripVertical, ChevronUp, ChevronDown } from 'lucide-react';
+import heic2any from 'heic2any';
 
 interface ImageData {
   id: string;
@@ -45,23 +46,48 @@ export default function MultiImageUpload({
           size: file.size,
         });
 
-        // Validate file type - accept common image formats including HEIC
-        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'image/heic', 'image/heif'];
-        const isValidType = file.type.startsWith('image/') || validTypes.includes(file.type.toLowerCase());
+        let fileToUpload = file;
+
+        // Convert HEIC to JPEG if needed
+        if (file.type === 'image/heic' || file.type === 'image/heif' || 
+            file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
+          console.log('Converting HEIC to JPEG...');
+          try {
+            const convertedBlob = await heic2any({
+              blob: file,
+              toType: 'image/jpeg',
+              quality: 0.9,
+            });
+            
+            // heic2any can return Blob or Blob[], handle both cases
+            const blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+            fileToUpload = new File([blob], file.name.replace(/\.heic$/i, '.jpg'), {
+              type: 'image/jpeg',
+            });
+            console.log('HEIC converted to JPEG successfully');
+          } catch (conversionError) {
+            console.error('HEIC conversion failed:', conversionError);
+            throw new Error('Failed to convert HEIC image. Please try a different image or convert to JPEG first.');
+          }
+        }
+
+        // Validate file type
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+        const isValidType = fileToUpload.type.startsWith('image/') && validTypes.some(t => fileToUpload.type.includes(t.split('/')[1]));
         
         if (!isValidType) {
-          console.error('Invalid file type:', file.type);
-          throw new Error(`Invalid file type: ${file.type}. Please select an image file.`);
+          console.error('Invalid file type:', fileToUpload.type);
+          throw new Error(`Invalid file type: ${fileToUpload.type}. Please select an image file.`);
         }
 
         // Validate file size (max 10MB)
-        if (file.size > 10 * 1024 * 1024) {
-          console.error('File too large:', file.size);
-          throw new Error(`File size is ${(file.size / 1024 / 1024).toFixed(2)}MB. Maximum is 10MB.`);
+        if (fileToUpload.size > 10 * 1024 * 1024) {
+          console.error('File too large:', fileToUpload.size);
+          throw new Error(`File size is ${(fileToUpload.size / 1024 / 1024).toFixed(2)}MB. Maximum is 10MB.`);
         }
 
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('file', fileToUpload);
 
         console.log('Sending upload request...');
 
