@@ -20,11 +20,14 @@ export async function POST(request: NextRequest) {
       size: file.size,
     });
 
-    // Validate file type
-    if (!file.type.startsWith('image/')) {
+    // Validate file type - accept common image formats including HEIC from iPhones
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'image/heic', 'image/heif'];
+    const isValidType = file.type.startsWith('image/') || validTypes.includes(file.type.toLowerCase()) || file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif');
+    
+    if (!isValidType) {
       console.error('Upload error: Invalid file type:', file.type);
       return NextResponse.json(
-        { error: 'Please upload an image file' },
+        { error: `Invalid file type: ${file.type}. Please upload an image file.` },
         { status: 400 }
       );
     }
