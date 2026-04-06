@@ -29,17 +29,40 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleToggleUniqueItem = async (id: string, currentValue: boolean) => {
+  const handleStatusChange = async (id: string, status: 'in_stock' | 'out_of_stock' | 'available' | 'sold') => {
     try {
       const product = products.find(p => p.id === id);
       if (!product) return;
+
+      let in_stock: boolean;
+      let is_unique_item: boolean;
+
+      switch (status) {
+        case 'in_stock':
+          in_stock = true;
+          is_unique_item = false;
+          break;
+        case 'out_of_stock':
+          in_stock = false;
+          is_unique_item = false;
+          break;
+        case 'available':
+          in_stock = true;
+          is_unique_item = true;
+          break;
+        case 'sold':
+          in_stock = false;
+          is_unique_item = true;
+          break;
+      }
 
       const response = await fetch(`/api/admin/products/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...product,
-          is_unique_item: !currentValue,
+          in_stock,
+          is_unique_item,
         }),
       });
 
@@ -48,34 +71,7 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
       }
 
       setProducts(products.map(p => 
-        p.id === id ? { ...p, is_unique_item: !currentValue } : p
-      ));
-    } catch (error) {
-      alert('Failed to update product');
-      console.error(error);
-    }
-  };
-
-  const handleToggleInStock = async (id: string, currentValue: boolean) => {
-    try {
-      const product = products.find(p => p.id === id);
-      if (!product) return;
-
-      const response = await fetch(`/api/admin/products/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...product,
-          in_stock: !currentValue,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to update product');
-      }
-
-      setProducts(products.map(p => 
-        p.id === id ? { ...p, in_stock: !currentValue } : p
+        p.id === id ? { ...p, in_stock, is_unique_item } : p
       ));
     } catch (error) {
       alert('Failed to update product');
@@ -137,7 +133,6 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Product</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Category</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Price</th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Unique Item</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Status</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Actions</th>
               </tr>
@@ -165,30 +160,46 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
                     <span className="font-semibold text-gray-900">£{Number(product.price).toLocaleString()}</span>
                   </td>
                   <td className="px-6 py-4">
-                    <label className="flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={product.is_unique_item || false}
-                        onChange={() => handleToggleUniqueItem(product.id, product.is_unique_item || false)}
-                        className="w-5 h-5 text-dark-purple rounded focus:ring-dark-purple cursor-pointer"
-                      />
-                    </label>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-col gap-2">
                       <label className="flex items-center cursor-pointer">
                         <input
-                          type="checkbox"
-                          checked={product.in_stock}
-                          onChange={() => handleToggleInStock(product.id, product.in_stock)}
-                          className="w-5 h-5 text-dark-purple rounded focus:ring-dark-purple cursor-pointer mr-2"
+                          type="radio"
+                          name={`status-${product.id}`}
+                          checked={!product.is_unique_item && product.in_stock}
+                          onChange={() => handleStatusChange(product.id, 'in_stock')}
+                          className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-2"
                         />
-                        <span className="text-sm font-semibold text-gray-700">
-                          {product.is_unique_item ? 
-                            (product.in_stock ? 'Available' : 'Sold') : 
-                            (product.in_stock ? 'In Stock' : 'Out of Stock')
-                          }
-                        </span>
+                        <span className="text-sm text-gray-700">In Stock</span>
+                      </label>
+                      <label className="flex items-center cursor-pointer">
+                        <input
+                          type="radio"
+                          name={`status-${product.id}`}
+                          checked={!product.is_unique_item && !product.in_stock}
+                          onChange={() => handleStatusChange(product.id, 'out_of_stock')}
+                          className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-2"
+                        />
+                        <span className="text-sm text-gray-700">Out of Stock</span>
+                      </label>
+                      <label className="flex items-center cursor-pointer">
+                        <input
+                          type="radio"
+                          name={`status-${product.id}`}
+                          checked={product.is_unique_item && product.in_stock}
+                          onChange={() => handleStatusChange(product.id, 'available')}
+                          className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-2"
+                        />
+                        <span className="text-sm text-gray-700">Available</span>
+                      </label>
+                      <label className="flex items-center cursor-pointer">
+                        <input
+                          type="radio"
+                          name={`status-${product.id}`}
+                          checked={product.is_unique_item && !product.in_stock}
+                          onChange={() => handleStatusChange(product.id, 'sold')}
+                          className="w-4 h-4 text-dark-purple focus:ring-dark-purple cursor-pointer mr-2"
+                        />
+                        <span className="text-sm text-gray-700">Sold</span>
                       </label>
                     </div>
                   </td>
