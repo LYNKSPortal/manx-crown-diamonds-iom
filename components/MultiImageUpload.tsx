@@ -39,36 +39,59 @@ export default function MultiImageUpload({
 
     try {
       const uploadPromises = Array.from(files).map(async (file) => {
-        // Validate file type
-        if (!file.type.startsWith('image/')) {
-          throw new Error('Please select image files only');
+        console.log('Processing file:', {
+          name: file.name,
+          type: file.type,
+          size: file.size,
+        });
+
+        // Validate file type - accept common image formats including HEIC
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'image/heic', 'image/heif'];
+        const isValidType = file.type.startsWith('image/') || validTypes.includes(file.type.toLowerCase());
+        
+        if (!isValidType) {
+          console.error('Invalid file type:', file.type);
+          throw new Error(`Invalid file type: ${file.type}. Please select an image file.`);
         }
 
         // Validate file size (max 10MB)
         if (file.size > 10 * 1024 * 1024) {
-          throw new Error('File size must be less than 10MB');
+          console.error('File too large:', file.size);
+          throw new Error(`File size is ${(file.size / 1024 / 1024).toFixed(2)}MB. Maximum is 10MB.`);
         }
 
         const formData = new FormData();
         formData.append('file', file);
 
-        const response = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
-        });
+        console.log('Sending upload request...');
 
-        if (!response.ok) {
+        try {
+          const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData,
+          });
+
+          console.log('Upload response status:', response.status);
+
+          if (!response.ok) {
+            const data = await response.json().catch(() => ({ error: 'Upload failed' }));
+            console.error('Upload failed:', data);
+            throw new Error(data.error || `Upload failed with status ${response.status}`);
+          }
+
           const data = await response.json();
-          throw new Error(data.error || 'Upload failed');
+          console.log('Upload successful:', data);
+          
+          return {
+            id: `temp-${Date.now()}-${Math.random()}`,
+            url: data.url,
+            publicId: data.publicId,
+            order: images.length,
+          };
+        } catch (fetchError) {
+          console.error('Fetch error:', fetchError);
+          throw fetchError;
         }
-
-        const data = await response.json();
-        return {
-          id: `temp-${Date.now()}-${Math.random()}`,
-          url: data.url,
-          publicId: data.publicId,
-          order: images.length,
-        };
       });
 
       const uploadedImages = await Promise.all(uploadPromises);
