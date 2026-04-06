@@ -93,9 +93,13 @@ export default function EditProductClient({ product }: EditProductClientProps) {
               Product Image
             </label>
             <ImageUpload
-              onImageUploaded={setImageUrl}
-              currentImageUrl={imageUrl}
+              onUploadComplete={(url) => setImageUrl(url)}
             />
+            {imageUrl && (
+              <div className="mt-4">
+                <img src={imageUrl} alt="Product" className="w-32 h-32 object-cover rounded-lg" />
+              </div>
+            )}
           </div>
 
           {/* Basic Information */}
