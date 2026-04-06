@@ -52,12 +52,38 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
 
         <div className="grid md:grid-cols-2 gap-12">
           <FadeIn delay={0.1}>
-            <div className="rounded-2xl aspect-square overflow-hidden shadow-2xl">
-              <img
-                src={product.imageUrl || '/images/image-coming-soon.jpg'}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
+            <div className="space-y-4">
+              {/* Main Image */}
+              <div className="rounded-2xl aspect-square overflow-hidden shadow-2xl">
+                <img
+                  src={product.images[0] || product.imageUrl || '/images/image-coming-soon.jpg'}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                  id="main-product-image"
+                />
+              </div>
+              
+              {/* Thumbnail Gallery */}
+              {product.images.length > 1 && (
+                <div className="grid grid-cols-4 gap-3">
+                  {product.images.map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        const mainImg = document.getElementById('main-product-image') as HTMLImageElement;
+                        if (mainImg) mainImg.src = image;
+                      }}
+                      className="rounded-lg overflow-hidden border-2 border-gray-200 hover:border-dark-purple transition-colors aspect-square"
+                    >
+                      <img
+                        src={image}
+                        alt={`${product.name} view ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </FadeIn>
 

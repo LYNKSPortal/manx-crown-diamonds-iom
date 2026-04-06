@@ -58,6 +58,16 @@ export async function getProductById(id: string): Promise<Product | null> {
       return null;
     }
 
+    // Fetch product images from product_images table
+    const imageRows = await sql`
+      SELECT image_url, display_order
+      FROM product_images
+      WHERE product_id = ${id}
+      ORDER BY display_order ASC
+    `;
+
+    const productImages = imageRows.map(img => img.image_url);
+
     const row = rows[0];
     return {
       id: row.id,
@@ -67,8 +77,8 @@ export async function getProductById(id: string): Promise<Product | null> {
       category: row.category,
       inStock: row.inStock,
       featured: row.featured,
-      images: ['/products/placeholder.jpg'],
-      imageUrl: row.imageUrl || undefined,
+      images: productImages.length > 0 ? productImages : ['/products/placeholder.jpg'],
+      imageUrl: productImages.length > 0 ? productImages[0] : (row.imageUrl || undefined),
       specifications: {
         material: row.material || undefined,
         gemstone: row.gemstone || undefined,
