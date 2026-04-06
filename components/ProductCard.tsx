@@ -22,10 +22,26 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
               Under Offer
             </div>
-          ) : !product.inStock && (
-            <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-              {(product as any).is_unique_item ? 'Sold' : 'Out of Stock'}
-            </div>
+          ) : (product as any).is_unique_item ? (
+            product.inStock ? (
+              <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                Available
+              </div>
+            ) : (
+              <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                Sold
+              </div>
+            )
+          ) : (
+            product.inStock ? (
+              <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                In Stock
+              </div>
+            ) : (
+              <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                Out of Stock
+              </div>
+            )
           )}
         </div>
         <div className="p-6">
