@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Upload, X, GripVertical } from 'lucide-react';
+import { Upload, X, GripVertical, ChevronUp, ChevronDown } from 'lucide-react';
 
 interface ImageData {
   id: string;
@@ -114,6 +114,22 @@ export default function MultiImageUpload({
     setDraggedIndex(null);
   };
 
+  const moveUp = (index: number) => {
+    if (index === 0) return;
+    const newImages = [...images];
+    [newImages[index - 1], newImages[index]] = [newImages[index], newImages[index - 1]];
+    const reorderedImages = newImages.map((img, i) => ({ ...img, order: i }));
+    onImagesChange(reorderedImages);
+  };
+
+  const moveDown = (index: number) => {
+    if (index === images.length - 1) return;
+    const newImages = [...images];
+    [newImages[index], newImages[index + 1]] = [newImages[index + 1], newImages[index]];
+    const reorderedImages = newImages.map((img, i) => ({ ...img, order: i }));
+    onImagesChange(reorderedImages);
+  };
+
   return (
     <div className="space-y-4">
       {/* Upload Button */}
@@ -152,7 +168,9 @@ export default function MultiImageUpload({
       {images.length > 0 && (
         <div>
           <p className="text-sm text-gray-600 mb-3">
-            Drag images to reorder. First image will be the main product image.
+            <span className="hidden md:inline">Drag images to reorder. </span>
+            <span className="md:hidden">Use arrow buttons to reorder. </span>
+            First image will be the main product image.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {images.map((image, index) => (
@@ -162,7 +180,7 @@ export default function MultiImageUpload({
                 onDragStart={() => handleDragStart(index)}
                 onDragOver={(e) => handleDragOver(e, index)}
                 onDragEnd={handleDragEnd}
-                className={`relative group border-2 rounded-lg overflow-hidden cursor-move transition-all ${
+                className={`relative group border-2 rounded-lg overflow-hidden md:cursor-move transition-all ${
                   draggedIndex === index
                     ? 'border-dark-purple opacity-50'
                     : 'border-gray-200 hover:border-dark-purple'
@@ -173,8 +191,28 @@ export default function MultiImageUpload({
                   {index + 1}
                 </div>
 
-                {/* Drag Handle */}
-                <div className="absolute top-2 right-2 bg-white/90 rounded p-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                {/* Mobile: Up/Down Arrows */}
+                <div className="md:hidden absolute top-2 right-2 flex flex-col gap-1 z-10">
+                  <button
+                    type="button"
+                    onClick={() => moveUp(index)}
+                    disabled={index === 0}
+                    className="bg-white/90 rounded p-1 hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed"
+                  >
+                    <ChevronUp className="w-4 h-4 text-gray-700" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => moveDown(index)}
+                    disabled={index === images.length - 1}
+                    className="bg-white/90 rounded p-1 hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed"
+                  >
+                    <ChevronDown className="w-4 h-4 text-gray-700" />
+                  </button>
+                </div>
+
+                {/* Desktop: Drag Handle */}
+                <div className="hidden md:block absolute top-2 right-2 bg-white/90 rounded p-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                   <GripVertical className="w-4 h-4 text-gray-600" />
                 </div>
 
