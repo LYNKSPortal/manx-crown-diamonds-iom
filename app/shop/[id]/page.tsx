@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
 import FadeIn from '@/components/FadeIn';
 import ProductImageGallery from './ProductImageGallery';
+import ProductContactForm from '@/components/ProductContactForm';
 
 export const revalidate = 0; // Disable caching
 export const dynamic = 'force-dynamic'; // Force dynamic rendering
@@ -138,21 +139,27 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
               <p className="text-sm md:text-base lg:text-lg text-gray-700 mb-6">
                 Contact us directly to discuss this product, arrange a viewing, or create a custom variation.
               </p>
-              <div className="space-y-3">
-                <a
-                  href="mailto:andy@manxcrowndiamonds.com"
-                  className="flex items-center gap-3 text-dark-purple hover:text-opacity-80 transition-colors"
-                >
-                  <Mail className="w-5 h-5" />
-                  andy@manxcrowndiamonds.com
-                </a>
-                <a
-                  href="tel:+447624368505"
-                  className="flex items-center gap-3 text-dark-purple hover:text-opacity-80 transition-colors"
-                >
-                  <Phone className="w-5 h-5" />
-                  +44 7624 368505
-                </a>
+              
+              <ProductContactForm productName={product.name} productId={product.id} />
+              
+              <div className="mt-6 pt-6 border-t border-gray-300">
+                <p className="text-sm text-gray-600 mb-3">Or contact us directly:</p>
+                <div className="space-y-3">
+                  <a
+                    href="mailto:andy@manxcrowndiamonds.com"
+                    className="flex items-center gap-3 text-dark-purple hover:text-opacity-80 transition-colors"
+                  >
+                    <Mail className="w-5 h-5" />
+                    andy@manxcrowndiamonds.com
+                  </a>
+                  <a
+                    href="tel:+447624368505"
+                    className="flex items-center gap-3 text-dark-purple hover:text-opacity-80 transition-colors"
+                  >
+                    <Phone className="w-5 h-5" />
+                    +44 7624 368505
+                  </a>
+                </div>
               </div>
             </div>
             </div>
