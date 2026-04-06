@@ -30,6 +30,7 @@ export default function EditProductClient({ product }: EditProductClientProps) {
     price: product.price || '',
     in_stock: product.in_stock !== false,
     featured: product.featured || false,
+    is_unique_item: product.is_unique_item || false,
     material: product.material || '',
     gemstone: product.gemstone || '',
     certification: product.certification || '',
@@ -195,7 +196,18 @@ export default function EditProductClient({ product }: EditProductClientProps) {
                 </div>
               </div>
 
-              <div>
+              <div className="flex gap-6">
+                <label className="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="is_unique_item"
+                    checked={formData.is_unique_item}
+                    onChange={handleChange}
+                    className="mr-3 accent-dark-purple w-5 h-5"
+                  />
+                  <span className="text-gray-700">Unique Item (one-of-a-kind)</span>
+                </label>
+
                 <label className="flex items-center cursor-pointer">
                   <input
                     type="checkbox"
@@ -204,7 +216,9 @@ export default function EditProductClient({ product }: EditProductClientProps) {
                     onChange={handleChange}
                     className="mr-3 accent-dark-purple w-5 h-5"
                   />
-                  <span className="text-gray-700">In Stock</span>
+                  <span className="text-gray-700">
+                    {formData.is_unique_item ? 'Available' : 'In Stock'}
+                  </span>
                 </label>
               </div>
 

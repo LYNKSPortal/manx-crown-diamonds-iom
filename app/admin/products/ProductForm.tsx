@@ -23,6 +23,7 @@ export default function ProductForm({ product, isEdit = false }: ProductFormProp
     price: product?.price || '',
     in_stock: product?.in_stock ?? true,
     featured: product?.featured ?? false,
+    is_unique_item: product?.is_unique_item ?? false,
     material: product?.material || '',
     gemstone: product?.gemstone || '',
     certification: product?.certification || '',
@@ -162,12 +163,25 @@ export default function ProductForm({ product, isEdit = false }: ProductFormProp
             <label className="flex items-center gap-2 cursor-pointer">
               <input
                 type="checkbox"
+                name="is_unique_item"
+                checked={formData.is_unique_item}
+                onChange={handleChange}
+                className="w-5 h-5 text-dark-purple rounded focus:ring-dark-purple"
+              />
+              <span className="text-sm font-semibold text-gray-700">Unique Item (one-of-a-kind)</span>
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
                 name="in_stock"
                 checked={formData.in_stock}
                 onChange={handleChange}
                 className="w-5 h-5 text-dark-purple rounded focus:ring-dark-purple"
               />
-              <span className="text-sm font-semibold text-gray-700">In Stock</span>
+              <span className="text-sm font-semibold text-gray-700">
+                {formData.is_unique_item ? 'Available' : 'In Stock'}
+              </span>
             </label>
           </div>
         </div>

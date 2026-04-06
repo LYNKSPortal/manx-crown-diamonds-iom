@@ -72,12 +72,12 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
                 {product.inStock ? (
                   <span className="flex items-center gap-2 text-green-600 font-semibold">
                     <CheckCircle className="w-5 h-5" />
-                    In Stock
+                    {(product as any).is_unique_item ? 'Available' : 'In Stock'}
                   </span>
                 ) : (
                   <span className="flex items-center gap-2 text-red-600 font-semibold">
                     <XCircle className="w-5 h-5" />
-                    Out of Stock
+                    {(product as any).is_unique_item ? 'Sold' : 'Out of Stock'}
                   </span>
                 )}
               </div>
