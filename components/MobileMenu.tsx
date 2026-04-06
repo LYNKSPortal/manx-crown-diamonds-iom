@@ -33,8 +33,8 @@ export default function MobileMenu({ currentPage }: MobileMenuProps) {
 
       {/* Full Page Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-dark-purple text-white z-50 transform transition-all duration-300 ease-in-out md:hidden ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        className={`fixed inset-0 bg-dark-purple text-white z-[100] transform transition-all duration-300 ease-in-out md:hidden ${
+          isOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
         }`}
       >
         <div className="flex justify-end p-6">
