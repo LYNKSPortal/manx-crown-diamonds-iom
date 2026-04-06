@@ -7,7 +7,7 @@ const JWT_SECRET = new TextEncoder().encode(
 
 export interface AdminUser {
   email: string;
-  role: 'admin';
+  role: 'admin' | 'master_admin';
 }
 
 export async function createToken(user: AdminUser): Promise<string> {

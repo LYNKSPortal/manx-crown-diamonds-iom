@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { setSession } from '@/lib/auth';
+import { sql } from '@/lib/db';
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,24 +15,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check credentials against environment variables
-    const adminEmail = process.env.ADMIN_EMAIL || 'support@lynksportal.com';
-    const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH || '$2b$10$Pe5QDoJPcjJ90PJTEtWjzeJkNjzZDYRcc1pJ7h3AuU1xqwTd2kY82';
+    // Check credentials against database
+    const users = await sql`
+      SELECT id, email, password, role
+      FROM users
+      WHERE email = ${email}
+      LIMIT 1
+    `;
 
-    console.log('Login attempt:', { email, adminEmail, hasHash: !!adminPasswordHash });
-
-    // Verify email
-    if (email !== adminEmail) {
-      console.log('Email mismatch:', { provided: email, expected: adminEmail });
+    if (users.length === 0) {
       return NextResponse.json(
         { error: 'Invalid credentials' },
         { status: 401 }
       );
     }
 
+    const user = users[0];
+
     // Verify password
-    const isValidPassword = await bcrypt.compare(password, adminPasswordHash);
-    console.log('Password validation:', { isValidPassword });
+    const isValidPassword = await bcrypt.compare(password, user.password);
     
     if (!isValidPassword) {
       return NextResponse.json(
@@ -40,12 +42,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create session
-    await setSession({ email, role: 'admin' });
+    // Create session with correct role
+    await setSession({ email: user.email, role: user.role as 'admin' | 'master_admin' });
 
     return NextResponse.json({
       success: true,
-      user: { email, role: 'admin' },
+      user: { email: user.email, role: user.role },
     });
   } catch (error) {
     console.error('Login error:', error);

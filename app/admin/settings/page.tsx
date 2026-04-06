@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
 import AdminLayout from '@/components/AdminLayout';
 import SettingsClient from './SettingsClient';
+import UserManagement from './UserManagement';
 
 export default async function SettingsPage() {
   const session = await getSession();
@@ -18,7 +19,13 @@ export default async function SettingsPage() {
           <p className="text-gray-600 mt-1">Manage your account settings and preferences</p>
         </div>
 
-        <SettingsClient email={session.email} />
+        <div className="space-y-8">
+          <SettingsClient email={session.email} />
+          
+          {session.role === 'master_admin' && (
+            <UserManagement />
+          )}
+        </div>
       </div>
     </AdminLayout>
   );
