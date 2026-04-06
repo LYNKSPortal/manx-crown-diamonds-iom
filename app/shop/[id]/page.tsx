@@ -94,33 +94,33 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
               <h2 className="text-xl font-serif font-bold text-gray-900 mb-4">Specifications</h2>
               <div className="bg-white rounded-xl p-6 shadow-md space-y-3">
                 {product.specifications.material && (
-                  <div className="flex justify-between border-b border-gray-200 pb-3">
+                  <div className="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 pb-3 gap-1">
                     <span className="font-semibold text-gray-700">Material:</span>
-                    <span className="text-gray-600">{product.specifications.material}</span>
+                    <span className="text-gray-600 sm:text-right">{product.specifications.material}</span>
                   </div>
                 )}
                 {product.specifications.gemstone && (
-                  <div className="flex justify-between border-b border-gray-200 pb-3">
+                  <div className="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 pb-3 gap-1">
                     <span className="font-semibold text-gray-700">Gemstone:</span>
-                    <span className="text-gray-600">{product.specifications.gemstone}</span>
+                    <span className="text-gray-600 sm:text-right">{product.specifications.gemstone}</span>
                   </div>
                 )}
                 {product.specifications.certification && (
-                  <div className="flex justify-between border-b border-gray-200 pb-3">
+                  <div className="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 pb-3 gap-1">
                     <span className="font-semibold text-gray-700">Certification:</span>
-                    <span className="text-gray-600">{product.specifications.certification}</span>
+                    <span className="text-gray-600 sm:text-right">{product.specifications.certification}</span>
                   </div>
                 )}
                 {product.specifications.weight && (
-                  <div className="flex justify-between border-b border-gray-200 pb-3">
+                  <div className="flex flex-col sm:flex-row sm:justify-between border-b border-gray-200 pb-3 gap-1">
                     <span className="font-semibold text-gray-700">Weight:</span>
-                    <span className="text-gray-600">{product.specifications.weight}</span>
+                    <span className="text-gray-600 sm:text-right">{product.specifications.weight}</span>
                   </div>
                 )}
                 {product.specifications.dimensions && (
-                  <div className="flex justify-between">
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                     <span className="font-semibold text-gray-700">Dimensions:</span>
-                    <span className="text-gray-600">{product.specifications.dimensions}</span>
+                    <span className="text-gray-600 sm:text-right">{product.specifications.dimensions}</span>
                   </div>
                 )}
               </div>
