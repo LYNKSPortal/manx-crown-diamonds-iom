@@ -4,12 +4,22 @@ import { clearSession } from '@/lib/auth';
 export async function POST() {
   try {
     await clearSession();
-    return NextResponse.json({ success: true });
+    return NextResponse.redirect(new URL('/admin/login', process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3003'));
   } catch (error) {
     console.error('Logout error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
     );
+  }
+}
+
+export async function GET() {
+  try {
+    await clearSession();
+    return NextResponse.redirect(new URL('/admin/login', process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3003'));
+  } catch (error) {
+    console.error('Logout error:', error);
+    return NextResponse.redirect(new URL('/admin/login', process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3003'));
   }
 }
