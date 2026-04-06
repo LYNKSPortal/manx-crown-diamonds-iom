@@ -111,7 +111,7 @@ export default async function Home() {
           </FadeIn>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {allProducts.slice(-4).reverse().map((product, index) => (
+            {allProducts.slice(0, 4).map((product, index) => (
               <FadeIn key={product.id} delay={0.2 + index * 0.1} className="block">
                 <a href={`/shop/${product.id}`} className="block group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative aspect-square overflow-hidden">
