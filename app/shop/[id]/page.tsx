@@ -4,6 +4,7 @@ import { ArrowLeft, Gem, CheckCircle, XCircle, Mail, Phone } from 'lucide-react'
 import { getProductById } from '@/lib/products';
 import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
+import FadeIn from '@/components/FadeIn';
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const product = getProductById(params.id);
@@ -16,32 +17,45 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     <div className="min-h-screen bg-gray-50">
       <header className="bg-dark-purple text-white py-6 px-6 sticky top-0 z-50 shadow-lg">
         <div className="flex justify-between items-center">
-          <a href="/" className="flex items-center">
-            <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-12 md:h-16" />
-          </a>
-          <nav className="hidden md:flex gap-8 items-center text-sm md:text-base lg:text-lg">
+          <FadeIn delay={0} className="inline-flex">
+            <a href="/" className="flex items-center">
+              <img src="/images/white-logo.png" alt="Manx Crown Diamonds" className="h-12 md:h-16" />
+            </a>
+          </FadeIn>
+          <div className="flex items-center">
+            <FadeIn delay={0.1} className="inline-flex">
+              <nav className="hidden md:flex gap-8 items-center text-sm md:text-base lg:text-lg">
             <a href="/" className="hover:text-antique-gold transition-colors">Home</a>
             <a href="/shop" className="text-antique-gold font-semibold">Shop</a>
             <a href="/sourcing" className="hover:text-antique-gold transition-colors">Sourcing</a>
             <a href="/gift-cards" className="hover:text-antique-gold transition-colors">Gift Cards</a>
             <a href="/contact" className="bg-antique-gold text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition-all">Contact Us</a>
-          </nav>
-          <MobileMenu currentPage="/shop" />
+              </nav>
+            </FadeIn>
+            <FadeIn delay={0.1} className="inline-flex">
+              <MobileMenu currentPage="/shop" />
+            </FadeIn>
+          </div>
         </div>
       </header>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <Link href="/shop" className="inline-flex items-center gap-2 text-dark-purple hover:text-opacity-80 mb-8 transition-colors">
-          <ArrowLeft className="w-5 h-5" />
-          Back to Shop
-        </Link>
+        <FadeIn>
+          <Link href="/shop" className="inline-flex items-center gap-2 text-dark-purple hover:text-opacity-80 mb-8 transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+            Back to Shop
+          </Link>
+        </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-gradient-to-br from-dark-purple to-gray-800 rounded-2xl p-12 flex items-center justify-center shadow-2xl">
+          <FadeIn delay={0.1}>
+            <div className="bg-gradient-to-br from-dark-purple to-gray-800 rounded-2xl p-12 flex items-center justify-center shadow-2xl">
             <Gem className="w-64 h-64 text-antique-gold" />
-          </div>
+            </div>
+          </FadeIn>
 
-          <div>
+          <FadeIn delay={0.2}>
+            <div>
             <div className="mb-6">
               {product.featured && (
                 <span className="inline-block bg-antique-gold text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
@@ -136,10 +150,12 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 </a>
               </div>
             </div>
-          </div>
+            </div>
+          </FadeIn>
         </div>
 
-        <div className="mt-16 bg-white rounded-xl p-8 shadow-lg">
+        <FadeIn delay={0.3}>
+          <div className="mt-16 bg-white rounded-xl p-8 shadow-lg">
           <h2 className="text-2xl font-serif font-bold text-dark-purple mb-4">
             Why Choose Manx Crown Diamonds?
           </h2>
@@ -163,7 +179,8 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               </p>
             </div>
           </div>
-        </div>
+          </div>
+        </FadeIn>
       </div>
       <Footer />
     </div>
