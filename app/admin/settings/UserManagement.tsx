@@ -6,6 +6,8 @@ import { Users, Key, Shield } from 'lucide-react';
 interface User {
   id: number;
   email: string;
+  first_name: string | null;
+  last_name: string | null;
   role: string;
   created_at: string;
   updated_at: string;
@@ -101,6 +103,7 @@ export default function UserManagement() {
         <table className="w-full">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
+              <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Name</th>
               <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Email</th>
               <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Role</th>
               <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Created</th>
@@ -111,9 +114,15 @@ export default function UserManagement() {
             {users.map(user => (
               <tr key={user.id} className="hover:bg-gray-50">
                 <td className="px-6 py-4">
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium text-gray-900">{user.email}</span>
-                  </div>
+                  <span className="font-medium text-gray-900">
+                    {user.first_name && user.last_name 
+                      ? `${user.first_name} ${user.last_name}`
+                      : user.first_name || user.last_name || '-'
+                    }
+                  </span>
+                </td>
+                <td className="px-6 py-4">
+                  <span className="text-gray-700">{user.email}</span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
