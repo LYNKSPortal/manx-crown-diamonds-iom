@@ -31,18 +31,10 @@ export default function MobileMenu({ currentPage }: MobileMenuProps) {
         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
 
-      {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
-          onClick={toggleMenu}
-        />
-      )}
-
-      {/* Mobile Menu Panel */}
+      {/* Full Page Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-dark-purple text-white z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-0 bg-dark-purple text-white z-50 transform transition-all duration-300 ease-in-out md:hidden ${
+          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
         <div className="flex justify-end p-6">
@@ -51,11 +43,11 @@ export default function MobileMenu({ currentPage }: MobileMenuProps) {
             className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Close menu"
           >
-            <X className="w-6 h-6" />
+            <X className="w-8 h-8" />
           </button>
         </div>
 
-        <nav className="flex flex-col px-6 space-y-4">
+        <nav className="flex flex-col items-center justify-center h-[calc(100vh-120px)] space-y-8 px-6">
           {navItems.map((item) => {
             const isActive = currentPage === item.href;
             const isContactButton = item.label === 'Contact Us';
@@ -66,7 +58,7 @@ export default function MobileMenu({ currentPage }: MobileMenuProps) {
                   key={item.href}
                   href={item.href}
                   onClick={toggleMenu}
-                  className="bg-antique-gold text-white px-6 py-3 rounded-lg hover:bg-opacity-80 transition-all text-center font-semibold"
+                  className="bg-antique-gold text-white px-8 py-4 rounded-lg hover:bg-opacity-80 transition-all text-center font-semibold text-xl w-full max-w-xs"
                 >
                   {item.label}
                 </a>
@@ -78,8 +70,8 @@ export default function MobileMenu({ currentPage }: MobileMenuProps) {
                 key={item.href}
                 href={item.href}
                 onClick={toggleMenu}
-                className={`text-lg py-2 hover:text-antique-gold transition-colors ${
-                  isActive ? 'text-antique-gold font-semibold' : ''
+                className={`text-3xl font-serif hover:text-antique-gold transition-colors ${
+                  isActive ? 'text-antique-gold font-bold' : ''
                 }`}
               >
                 {item.label}
