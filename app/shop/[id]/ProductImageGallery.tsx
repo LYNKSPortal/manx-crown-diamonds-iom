@@ -131,11 +131,11 @@ export default function ProductImageGallery({ images, productName }: ProductImag
           )}
 
           {/* Main Image */}
-          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-12">
+          <div className="relative w-full h-full flex items-center justify-center">
             <img
               src={images[lightboxIndex]}
               alt={`${productName} view ${lightboxIndex + 1}`}
-              className="max-w-full max-h-full object-contain"
+              className="w-full h-full object-contain"
             />
           </div>
 
