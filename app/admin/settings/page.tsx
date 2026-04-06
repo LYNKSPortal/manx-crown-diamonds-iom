@@ -20,25 +20,10 @@ export default async function SettingsPage() {
         </div>
 
         <div className="space-y-8">
-          {/* Debug: Show current role */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <p className="text-sm text-blue-800">
-              <strong>Current Role:</strong> {session.role || 'Not set'} 
-              {session.role === 'master_admin' ? ' ✓ Master Admin Access' : ' (Regular Admin)'}
-            </p>
-          </div>
-
           <SettingsClient email={session.email} />
           
-          {session.role === 'master_admin' ? (
+          {session.role === 'master_admin' && (
             <UserManagement />
-          ) : (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-              <p className="text-yellow-800">
-                <strong>User Management:</strong> Only available to master administrators.
-                Please log out and log back in if you should have master admin access.
-              </p>
-            </div>
           )}
         </div>
       </div>
